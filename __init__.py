@@ -1,20 +1,12 @@
-from sanic import Sanic
-from sanic.response import json, html, text
-from jinja2 import Environment, FileSystemLoader, select_autoescape
+from flask import Flask, request, render_template, redirect, url_for
 
 
-views = Environment(
-  loader=FileSystemLoader('views'),
-  autoescape=select_autoescape(['html', 'xml'])
-)
-
-app = Sanic()
+app = Flask(__name__, template_folder="views")
 
 
 @app.route("/")
-async def test(req):
-  tmpl = views.get_template('index.html')
-  return html(tmpl.render(n=20, test=req.args.get('test')))
+def root(req):
+  return render_template('index.html', text=text)
 
 if __name__ == "__main__":
   app.run(host="0.0.0.0", port=8000)
