@@ -5,3 +5,7 @@ threadsafe: true
 handlers:
 - url: /.*
   script: __init__.app
+
+libraries:
+- name: pycrypto
+  version: "2.6.1"

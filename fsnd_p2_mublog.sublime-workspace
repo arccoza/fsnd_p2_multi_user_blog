@@ -1,0 +1,1070 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"get",
+				"getattr"
+			],
+			[
+				"Sec",
+				"Security2"
+			],
+			[
+				"sec",
+				"secret"
+			],
+			[
+				"Secur",
+				"Security"
+			],
+			[
+				"Secu",
+				"Security"
+			],
+			[
+				"_vl",
+				"_value"
+			],
+			[
+				"re",
+				"redirect"
+			],
+			[
+				"pas",
+				"password_verified"
+			],
+			[
+				"res",
+				"reset"
+			],
+			[
+				"before",
+				"before_request"
+			],
+			[
+				"all",
+				"allow_handler"
+			],
+			[
+				"red",
+				"redirect"
+			],
+			[
+				"en",
+				"encode"
+			],
+			[
+				"sess",
+				"session_id"
+			],
+			[
+				"usr",
+				"username='test"
+			],
+			[
+				"to",
+				"to_token"
+			],
+			[
+				"from",
+				"from_token"
+			],
+			[
+				"sessi",
+				"session_name"
+			],
+			[
+				"uni",
+				"unique"
+			],
+			[
+				"user",
+				"user_exists"
+			],
+			[
+				"Pas",
+				"PasswordProperty"
+			],
+			[
+				"pw",
+				"pw_hasher"
+			],
+			[
+				"pass",
+				"pass_verified"
+			],
+			[
+				"is",
+				"is_username"
+			],
+			[
+				"try",
+				"try\tTry/Except"
+			],
+			[
+				"_val",
+				"_values"
+			],
+			[
+				"ndb",
+				"ndb.Property"
+			],
+			[
+				"prop",
+				"property"
+			],
+			[
+				"auth",
+				"auth_pages"
+			],
+			[
+				"Blo",
+				"BlogPost"
+			],
+			[
+				"pos",
+				"post_id"
+			],
+			[
+				"blog",
+				"blog_id"
+			],
+			[
+				"in",
+				"inherit"
+			],
+			[
+				"val",
+				"value\tAttr"
+			],
+			[
+				"alin",
+				"align-self"
+			],
+			[
+				"flex",
+				"flex-start"
+			],
+			[
+				"fle",
+				"flex-end"
+			],
+			[
+				"conte",
+				"align-content"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"text",
+				"textarea\tTag"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"co",
+				"compile"
+			],
+			[
+				"rotate",
+				"rotate3d($1)"
+			],
+			[
+				"rotat",
+				"rotateX($1)"
+			],
+			[
+				"div",
+				"divider"
+			],
+			[
+				"scr",
+				"screenshot"
+			],
+			[
+				"hae",
+				"header"
+			],
+			[
+				"dim",
+				"dimmable"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"head",
+				"header"
+			],
+			[
+				"border-top",
+				"border-top-width"
+			],
+			[
+				"lighten",
+				"lighten(color, 10%)"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"ti",
+				"title"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"node",
+				"nodes"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			],
+			[
+				"pa",
+				"parent"
+			],
+			[
+				"css",
+				"cssobj"
+			],
+			[
+				"id",
+				"idx2"
+			],
+			[
+				"_",
+				"_idx1"
+			],
+			[
+				"cons",
+				"constructor"
+			],
+			[
+				"__ca",
+				"__call__2"
+			],
+			[
+				"Aer",
+				"ArgoDecl"
+			],
+			[
+				"pr",
+				"property"
+			],
+			[
+				"f",
+				"fetch_info"
+			],
+			[
+				"tmdb",
+				"tmdbsimple"
+			],
+			[
+				"Bas",
+				"BaseHTTPRequestHandler"
+			],
+			[
+				"tr",
+				"trailer_url"
+			],
+			[
+				"the",
+				"the_fifth_element"
+			],
+			[
+				"sel",
+				"selector"
+			],
+			[
+				"wa",
+				"warnings"
+			],
+			[
+				"ite",
+				"items"
+			],
+			[
+				"__d",
+				"__dict__"
+			],
+			[
+				"_pro",
+				"_proxy_target"
+			],
+			[
+				"tree",
+				"Tree2"
+			],
+			[
+				"ke",
+				"key"
+			],
+			[
+				"t",
+				"target"
+			],
+			[
+				"target",
+				"target"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"jo",
+				"jobinator"
+			],
+			[
+				"op",
+				"options"
+			],
+			[
+				"opt",
+				"options"
+			],
+			[
+				"ex",
+				"except"
+			],
+			[
+				"grou",
+				"groups"
+			],
+			[
+				"expe",
+				"expected"
+			],
+			[
+				"exp",
+				"expected"
+			],
+			[
+				"cmd",
+				"cmd"
+			],
+			[
+				"s",
+				"self"
+			],
+			[
+				"Rsync",
+				"RsyncError"
+			],
+			[
+				"handl",
+				"handler1"
+			],
+			[
+				"hand",
+				"handler1"
+			],
+			[
+				"rs",
+				"rsync_version"
+			],
+			[
+				"long",
+				"long_args"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "__init__.py",
+			"settings":
+			{
+				"buffer_size": 313,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/index.html",
+			"settings":
+			{
+				"buffer_size": 73,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/base.html",
+			"settings":
+			{
+				"buffer_size": 530,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/auth.py",
+			"settings":
+			{
+				"buffer_size": 2826,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/blog.py",
+			"settings":
+			{
+				"buffer_size": 252,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/__init__.py",
+			"settings":
+			{
+				"buffer_size": 1348,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"last_filter": "inden",
+		"selected_items":
+		[
+			[
+				"inden",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"lint",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"spaces",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"ind",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"inde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"revers",
+				"Permute Selections: Reverse"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"view ",
+				"View: Toggle Menu"
+			],
+			[
+				"view menu",
+				"View: Toggle Menu"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 477.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/models",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/views"
+	],
+	"file_history":
+	[
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/requirements.txt",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/requirements.txt",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/appengine_config.py",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/fsnd_p2_mublog.sublime-project",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/app.yaml",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/views/welcome.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/utils/__init__.py",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/app.yaml",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/models/auth.py",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/auth_bp.py",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/routes/__init__.py",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/models/__init__.py",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/fsnd_p2_hw.sublime-project",
+		"/home/adrien/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/views/rot13.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/views/auth.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/pub/projects/fsnd_p0_movie_trailer_website.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/pub/index.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/pub/projects/fsnd_p1_portfolio.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/definitions/collections/grid.less",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/definitions/modules/modal.less",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/themes/default/modules/modal.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/definitions/globals/site.less",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/src/theming-files/card.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/src/theming.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/theme.config",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/theme.less",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/semantic.less",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic.json",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/modules/modal.overrides",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/elements/divider.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/elements/container.overrides",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/collections/grid.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/modules/dimmer.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/globals/reset.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/gulpfile.js",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/globals/reset.overrides",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/definitions/globals/reset.less",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/themes/default/modules/modal.overrides",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/modules/modal.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/definitions/elements/container.less",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/definitions/elements/segment.less",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/elements/segment.overrides",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/src/projects/fsnd_p2.md",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/package.json",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/tasks/watch.js",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/themes/default/elements/divider.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/definitions/elements/divider.less",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/pub/fw/semantic.css",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/tasks/clean.js",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/gulpfile.js",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/themes/default/globals/site.overrides",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/themes/default/elements/header.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/themes/default/elements/header.overrides",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/dist/semantic.css",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/src/kitchen-sink.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/definitions/elements/header.less",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/globals/site.overrides",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/dist/components/header.css",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/themes/bookish/elements/header.overrides",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/themes/default/views/card.overrides",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/themes/default/views/card.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/themes/flat/globals/site.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/modules/dropdown.overrides",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/elements/button.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/semantic/src/site/globals/site.variables",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/src/theming-files/button.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/src/theming-files/input.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/src/theming-files/menu.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/src/theming-files/site.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/src/theming-files/table.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/src/index.md",
+		"/home/adrien/Projects/code/godot-demo/scripts/kine.gd",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/pub/projects/test2.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/pub/test.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/src/projects/part.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p1_portfolio/README.md",
+		"/home/adrien/Projects/education/udacity_fsnd/bs/bootstrap-prestructure.htm",
+		"/home/adrien/Projects/education/udacity_fsnd/bs/test.html",
+		"/home/adrien/Projects/code/postcss-argo/package.json",
+		"/home/adrien/Projects/code/postcss-argo/node_modules/cssnano/package.json",
+		"/home/adrien/Projects/code/postcss-argo/node_modules/cssnano/dist/lib/core.js",
+		"/home/adrien/Projects/code/postcss-argo/node_modules/cssnano/dist/index.js",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_proj_movie_website/build.py",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_proj_movie_website/movies.html.mustache",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_proj_movie_website/server.py",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_proj_movie_website/models.py",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_proj_movie_website/media.py",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_proj_movie_website/fsnd_p0_movie_trailer_website.sublime-project",
+		"/home/adrien/Projects/code/postcss-argo/.gitignore",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_proj_movie_website/movies.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_proj_movie_website/.gitignore",
+		"/home/adrien/Projects/code/postcss-if-media/package.json",
+		"/home/adrien/Projects/code/postcss-if-media/gulpfile.js",
+		"/home/adrien/Projects/code/metalsmith-favicons/.gitignore",
+		"/home/adrien/Projects/code/metalsmith-favicons/package.json",
+		"/home/adrien/Projects/education/Udacity - FSND/test2.py",
+		"/home/adrien/Battle.net.desktop",
+		"/home/adrien/Projects/code/py_castaway/requirements.txt",
+		"/home/adrien/Projects/code/py_rsync_wrapper/options.json",
+		"/home/adrien/Projects/code/py_rsync_wrapper/eventful.py",
+		"/home/adrien/Projects/code/py_rsync_wrapper/src/rsync_options.txt",
+		"/home/adrien/Projects/code/py_rsync_wrapper/.gitignore",
+		"/home/adrien/Projects/code/py_rsync_wrapper/options.py",
+		"/home/adrien/Projects/code/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh",
+		"/home/adrien/Projects/code/UnrealEngine/Engine/Build/BatchFiles/Linux/BuildThirdParty.sh",
+		"/home/adrien/Projects/code/UnrealEngine/Build/BatchFiles/Linux/BuildThirdParty.sh",
+		"/home/adrien/Projects/code/UnrealEngine/Engine/Build/BatchFiles/Linux/BuildThirdParty.log",
+		"/home/adrien/Projects/code/UnrealEngine/Setup.sh",
+		"/home/adrien/Projects/code/py_rsync_wrapper/tools.py",
+		"/home/adrien/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/adrien/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"url_for",
+			"form",
+			"redi",
+			"{{.*?}}",
+			"{{.*}}",
+			"{{*.}}",
+			"15%",
+			"400",
+			"strong",
+			"400",
+			"bold",
+			"weight",
+			"slug",
+			"background",
+			"dimmer",
+			"'\n",
+			"aligned",
+			"callback",
+			"watch",
+			"weight",
+			"large",
+			"gutter",
+			"rowSpacing",
+			"columncount",
+			"gutterWidth",
+			"gutter",
+			"contentLinkColor",
+			"#1e70bf",
+			"link",
+			"invert",
+			"Site Overrides",
+			"border",
+			"special",
+			"fontsize",
+			"weight",
+			"15%",
+			"headerFontWeight",
+			"All UI _ Semantic UI_files",
+			"dividing",
+			".ui.dividing.header",
+			"dividing",
+			"linkHoverColor",
+			"invertedHoveredTextColor",
+			"linkhover",
+			"inverted",
+			"textColor",
+			"headerColor",
+			"meta",
+			"descr",
+			"invert",
+			"internalBorderColor",
+			"borderWidth",
+			"contentDivider",
+			"invertedDarkTextColor",
+			"divider",
+			"blue",
+			"dimmer",
+			"dimmercol",
+			"inverted",
+			"dimmerColor",
+			"invert",
+			"@border",
+			"borderco",
+			"invert",
+			"textcolor",
+			"internalBorderColor",
+			"default",
+			"color",
+			"bold",
+			"weight",
+			"shad",
+			"./",
+			"Theming - Semantic_files",
+			"console.log",
+			"mustache",
+			"postcss.plugin",
+			"'",
+			"k",
+			"format",
+			"undefined",
+			"resul",
+			"n",
+			"_collection",
+			"container",
+			"treat_as_list",
+			".items()",
+			"NewOptions",
+			"NewTarget",
+			"pexpect.spawn",
+			"_events",
+			"same_as",
+			"\"k",
+			"k",
+			"BuildHLSLCC",
+			"CLANG_TO_USE",
+			"3.8",
+			"long_key",
+			"import",
+			"args",
+			"size",
+			"font"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"",
+			"25%",
+			"9%",
+			"kitchen-sink-files",
+			"flat",
+			"../../semantic/dist/components/",
+			"../../semantic/dist/",
+			"../../semantic/dist",
+			"../semantic/dist",
+			"theming-files",
+			"gmustache",
+			"_branches",
+			"collection",
+			"as_list",
+			"Options",
+			"Target",
+			"spawn",
+			"_emitter_events"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "__init__.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 313,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								247,
+								247
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "views/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 73,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								58,
+								58
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/base.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 530,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								497,
+								497
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/auth.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2826,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1706,
+								1706
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1173.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "models/blog.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 252,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								61,
+								61
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "models/__init__.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1348,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								269,
+								269
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "fsnd_p2_mublog.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 575.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 437.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 273.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

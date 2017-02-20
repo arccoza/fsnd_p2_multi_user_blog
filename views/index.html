@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Page Title</title>
-</head>
-<body>
-<ul>
-{%- for i in range(n) %}
-  <li>
-    {{i if not i or (i % 3 and i % 5) else '' -}}
-    {{'fizz' if i and not i % 3 else '' -}}
-    {{'buzz' if i and not i % 5 else ''}}
-  </li>
-{% endfor -%}
-</ul>
-
-<form>
-  <input type="hidden" name="test" value="<h1>pizza</h1>">
-  <input type="submit" name="">
-</form>
-{{test}}
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block body_content %}
+content
+{% endblock %}
