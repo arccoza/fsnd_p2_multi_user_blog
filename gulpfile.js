@@ -4,6 +4,12 @@ var rollup = require('gulp-better-rollup')
 var babel = require('rollup-plugin-babel')
 var nodeResolve = require('rollup-plugin-node-resolve');
 var commonjs = require('rollup-plugin-commonjs');
+var json = require('rollup-plugin-json');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+var cssnano = require('cssnano');
+var atImport = require("postcss-import")
+var print = console.log.bind(console);
 
  
 gulp.task('build:js', () => {
@@ -12,10 +18,14 @@ gulp.task('build:js', () => {
     .pipe(rollup({
       // notice there is no `entry` option as rollup integrates into gulp pipeline 
       plugins: [
-        nodeResolve({ jsnext: true, main: true, browser: true }),
+        nodeResolve({ jsnext: true, main: true, browser: true, preferBuiltins: false }),
         commonjs({ include: 'node_modules/**' }),
+        json(),
         babel({
-          "exclude": 'node_modules/**'
+          exclude: [
+            'node_modules/**',
+            '*.json'
+          ],
         })
       ]
     }, {
@@ -25,4 +35,23 @@ gulp.task('build:js', () => {
     // inlining the sourcemap into the exported .js file 
     // .pipe(sourcemaps.write())
     .pipe(gulp.dest('bld/js'))
-})
+});
+
+
+gulp.task('build:css', function () {
+  var processors = [
+    atImport(),
+    autoprefixer(),
+    // cssnano()
+  ]
+
+  return gulp.src('src/css/main.css')
+    .pipe(postcss(processors))
+    .pipe(gulp.dest('bld/css'));
+});
+
+
+gulp.task('watch', function() {
+  gulp.watch('src/**/*.js', ['build:js']);
+  gulp.watch('src/**/*.css', ['build:css']);
+});

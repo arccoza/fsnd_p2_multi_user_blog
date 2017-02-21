@@ -357,7 +357,7 @@ StepMap.prototype.mapResult = function mapResult (pos, assoc) { return this._map
 // :: (number, ?number) → number
 // Map the given position through this map, returning only the
 // mapped position.
-StepMap.prototype.map = function map (pos, assoc) { return this._map(pos, assoc, true) };
+StepMap.prototype.map = function map$1 (pos, assoc) { return this._map(pos, assoc, true) };
 
 StepMap.prototype._map = function _map (pos, assoc, simple) {
     var this$1 = this;
@@ -429,7 +429,7 @@ StepMap.empty = new StepMap([]);
 // steps are inverted versions of earlier steps. (This comes up when
 // ‘rebasing’ steps for collaboration or history management.) This
 // class implements [`Mappable`](#transform.Mappable).
-var Mapping$1 = function Mapping(maps, mirror, from, to) {
+var Mapping$1 = function Mapping$1(maps, mirror, from, to) {
   // :: [StepMap]
   // The step maps in this mapping.
   this.maps = maps || [];
@@ -491,7 +491,7 @@ Mapping$1.prototype.appendMapping = function appendMapping (mapping) {
 
 // :: (number, ?number) → number
 // Map a position through this remapping.
-Mapping$1.prototype.map = function map (pos, assoc) {
+Mapping$1.prototype.map = function map$1 (pos, assoc) {
     var this$1 = this;
 
   if (this.mirror) { return this._map(pos, assoc, true) }
@@ -539,13 +539,13 @@ Mapping$1.prototype._map = function _map (pos, assoc, simple) {
 };
 var Mapping_1 = Mapping$1;
 
-var map = {
+var map$1 = {
 	MapResult: MapResult_1,
 	StepMap: StepMap_1,
 	Mapping: Mapping_1
 };
 
-var ref$1$1 = map;
+var ref$1$1 = map$1;
 var Mapping = ref$1$1.Mapping;
 
 var TransformError = (function (Error) {
@@ -566,7 +566,7 @@ var TransformError_1 = TransformError;
 //
 // The high-level transforming methods return the `Transform` object
 // itself, so that they can be chained.
-var Transform$1 = function Transform(doc) {
+var Transform$1 = function Transform$1(doc) {
   // :: Node
   // The current document (the result of applying the steps in the
   // transform).
@@ -1235,14 +1235,14 @@ function insertInto(content, dist, insert, parent) {
 // The empty slice.
 Slice$1.empty = new Slice$1(Fragment$2.empty, 0, 0);
 
-function replace$1($from, $to, slice) {
+function replace$2($from, $to, slice) {
   if (slice.openLeft > $from.depth)
     { throw new ReplaceError$1("Inserted content deeper than insertion position") }
   if ($from.depth - slice.openLeft != $to.depth - slice.openRight)
     { throw new ReplaceError$1("Inconsistent open depths") }
   return replaceOuter($from, $to, slice, 0)
 }
-var replace_2 = replace$1;
+var replace_2 = replace$2;
 
 function replaceOuter($from, $to, slice, depth) {
   var index = $from.index(depth), node = $from.node(depth);
@@ -1250,15 +1250,15 @@ function replaceOuter($from, $to, slice, depth) {
     var inner = replaceOuter($from, $to, slice, depth + 1);
     return node.copy(node.content.replaceChild(index, inner))
   } else if (!slice.content.size) {
-    return close(node, replaceTwoWay($from, $to, depth))
+    return close$1(node, replaceTwoWay($from, $to, depth))
   } else if (!slice.openLeft && !slice.openRight && $from.depth == depth && $to.depth == depth) { // Simple, flat case
     var parent = $from.parent, content = parent.content;
-    return close(parent, content.cut(0, $from.parentOffset).append(slice.content).append(content.cut($to.parentOffset)))
+    return close$1(parent, content.cut(0, $from.parentOffset).append(slice.content).append(content.cut($to.parentOffset)))
   } else {
     var ref = prepareSliceForReplace(slice, $from);
     var start = ref.start;
     var end = ref.end;
-    return close(node, replaceThreeWay($from, start, end, $to, depth))
+    return close$1(node, replaceThreeWay($from, start, end, $to, depth))
   }
 }
 
@@ -1273,7 +1273,7 @@ function joinable($before, $after, depth) {
   return node
 }
 
-function addNode(child, target) {
+function addNode$1(child, target) {
   var last = target.length - 1;
   if (last >= 0 && child.isText && child.sameMarkup(target[last]))
     { target[last] = child.withText(target[last].text + child.text); }
@@ -1289,16 +1289,16 @@ function addRange($start, $end, depth, target) {
     if ($start.depth > depth) {
       startIndex++;
     } else if ($start.textOffset) {
-      addNode($start.nodeAfter, target);
+      addNode$1($start.nodeAfter, target);
       startIndex++;
     }
   }
-  for (var i = startIndex; i < endIndex; i++) { addNode(node.child(i), target); }
+  for (var i = startIndex; i < endIndex; i++) { addNode$1(node.child(i), target); }
   if ($end && $end.depth == depth && $end.textOffset)
-    { addNode($end.nodeBefore, target); }
+    { addNode$1($end.nodeBefore, target); }
 }
 
-function close(node, content) {
+function close$1(node, content) {
   if (!node.type.validContent(content, node.attrs))
     { throw new ReplaceError$1("Invalid content for node " + node.type.name) }
   return node.copy(content)
@@ -1312,13 +1312,13 @@ function replaceThreeWay($from, $start, $end, $to, depth) {
   addRange(null, $from, depth, content);
   if (openLeft && openRight && $start.index(depth) == $end.index(depth)) {
     checkJoin(openLeft, openRight);
-    addNode(close(openLeft, replaceThreeWay($from, $start, $end, $to, depth + 1)), content);
+    addNode$1(close$1(openLeft, replaceThreeWay($from, $start, $end, $to, depth + 1)), content);
   } else {
     if (openLeft)
-      { addNode(close(openLeft, replaceTwoWay($from, $start, depth + 1)), content); }
+      { addNode$1(close$1(openLeft, replaceTwoWay($from, $start, depth + 1)), content); }
     addRange($start, $end, depth, content);
     if (openRight)
-      { addNode(close(openRight, replaceTwoWay($end, $to, depth + 1)), content); }
+      { addNode$1(close$1(openRight, replaceTwoWay($end, $to, depth + 1)), content); }
   }
   addRange($to, null, depth, content);
   return new Fragment$2(content)
@@ -1329,7 +1329,7 @@ function replaceTwoWay($from, $to, depth) {
   addRange(null, $from, depth, content);
   if ($from.depth > depth) {
     var type = joinable($from, $to, depth + 1);
-    addNode(close(type, replaceTwoWay($from, $to, depth + 1)), content);
+    addNode$1(close$1(type, replaceTwoWay($from, $to, depth + 1)), content);
   }
   addRange($to, null, depth, content);
   return new Fragment$2(content)
@@ -1615,7 +1615,7 @@ var ref$1$3 = mark;
 var Mark$1 = ref$1$3.Mark;
 var ref$2$2 = replace_1;
 var Slice = ref$2$2.Slice;
-var replace = ref$2$2.replace;
+var replace$1 = ref$2$2.replace;
 var ref$3$1 = resolvedpos;
 var ResolvedPos = ref$3$1.ResolvedPos;
 var ref$4 = comparedeep;
@@ -1803,7 +1803,7 @@ Node.prototype.slice = function (from, to, includeParents) {
 // into. If any of this is violated, an error of type
 // [`ReplaceError`](#model.ReplaceError) is thrown.
 Node.prototype.replace = function (from, to, slice) {
-  return replace(this.resolve(from), this.resolve(to), slice)
+  return replace$1(this.resolve(from), this.resolve(to), slice)
 };
 
 // :: (number) → ?Node
@@ -3313,7 +3313,7 @@ DOMParser.schemaRules = function (schema) {
   var loop = function ( name ) {
     var rules = schema.marks[name].spec.parseDOM;
     if (rules) { rules.forEach(function (rule) {
-      insert(rule = copy(rule));
+      insert(rule = copy$1(rule));
       rule.mark = name;
     }); }
   };
@@ -3322,7 +3322,7 @@ DOMParser.schemaRules = function (schema) {
   var loop$1 = function ( name ) {
     var rules$1 = schema.nodes[name$1].spec.parseDOM;
     if (rules$1) { rules$1.forEach(function (rule) {
-      insert(rule = copy(rule));
+      insert(rule = copy$1(rule));
       rule.node = name$1;
     }); }
   };
@@ -3738,7 +3738,7 @@ function parseStyles(style) {
   return result
 }
 
-function copy(obj) {
+function copy$1(obj) {
   var copy = {};
   for (var prop in obj) { copy[prop] = obj[prop]; }
   return copy
@@ -3951,7 +3951,7 @@ exports.DOMSerializer =  to_dom.DOMSerializer;
 var ref$2$1 = index$4;
 var ReplaceError = ref$2$1.ReplaceError;
 
-var ref$1$2 = map;
+var ref$1$2 = map$1;
 var StepMap$1 = ref$1$2.StepMap;
 
 function mustOverride() { throw new Error("Override me") }
@@ -3985,7 +3985,7 @@ Step.prototype.invert = function invert (_doc) { return mustOverride() };
 // Map this step through a mappable thing, returning either a
 // version of that step with its positions adjusted, or `null` if
 // the step was entirely deleted by the mapping.
-Step.prototype.map = function map$$1 (_mapping) { return mustOverride() };
+Step.prototype.map = function map (_mapping) { return mustOverride() };
 
 // :: (other: Step) → ?Step
 // Try to merge this step with another one, to be applied directly
@@ -4061,7 +4061,7 @@ StepResult.fromReplace = function fromReplace (doc, from, to, slice) {
 };
 var StepResult_1 = StepResult;
 
-var step = {
+var step$1 = {
 	Step: Step_1,
 	StepResult: StepResult_1
 };
@@ -4069,10 +4069,10 @@ var step = {
 var ref$12 = index$4;
 var Slice$4 = ref$12.Slice;
 
-var ref$1$8 = step;
+var ref$1$8 = step$1;
 var Step$1 = ref$1$8.Step;
 var StepResult$1 = ref$1$8.StepResult;
-var ref$2$6 = map;
+var ref$2$6 = map$1;
 var StepMap$2 = ref$2$6.StepMap;
 
 // ::- Replace a part of the document with a slice of new content.
@@ -4103,7 +4103,7 @@ var ReplaceStep$1 = (function (Step) {
     return new ReplaceStep(this.from, this.from + this.slice.size, doc.slice(this.from, this.to))
   };
 
-  ReplaceStep.prototype.map = function map$$1 (mapping) {
+  ReplaceStep.prototype.map = function map (mapping) {
     var from = mapping.mapResult(this.from, 1), to = mapping.mapResult(this.to, -1);
     if (from.deleted && to.deleted) { return null }
     return new ReplaceStep(from.pos, Math.max(from.pos, to.pos), this.slice)
@@ -4187,7 +4187,7 @@ var ReplaceAroundStep$1 = (function (Step) {
                                  this.gapFrom - this.from, this.structure)
   };
 
-  ReplaceAroundStep.prototype.map = function map$$1 (mapping) {
+  ReplaceAroundStep.prototype.map = function map (mapping) {
     var from = mapping.mapResult(this.from, 1), to = mapping.mapResult(this.to, -1);
     var gapFrom = mapping.map(this.gapFrom, -1), gapTo = mapping.map(this.gapTo, 1);
     if ((from.deleted && to.deleted) || gapFrom < from.pos || gapTo > to.pos) { return null }
@@ -4527,7 +4527,7 @@ var structure = {
 var ref$13 = index$4;
 var Fragment$7 = ref$13.Fragment;
 var Slice$5 = ref$13.Slice;
-var ref$1$9 = step;
+var ref$1$9 = step$1;
 var Step$2 = ref$1$9.Step;
 var StepResult$2 = ref$1$9.StepResult;
 
@@ -5268,7 +5268,7 @@ function matchStrippingMarks(match, fragment) {
   return Fragment$9.from(newNodes)
 }
 
-var replace$2 = {
+var replace$3 = {
 	replaceStep: replaceStep_1
 };
 
@@ -5276,17 +5276,17 @@ var index$2 = createCommonjsModule(function (module, exports) {
 var assign;
 ((assign = transform, exports.Transform = assign.Transform, exports.TransformError = assign.TransformError))
 ;var assign$1;
-((assign$1 = step, exports.Step = assign$1.Step, exports.StepResult = assign$1.StepResult))
+((assign$1 = step$1, exports.Step = assign$1.Step, exports.StepResult = assign$1.StepResult))
 ;var assign$2;
 ((assign$2 = structure, exports.joinPoint = assign$2.joinPoint, exports.canJoin = assign$2.canJoin, exports.canSplit = assign$2.canSplit, exports.insertPoint = assign$2.insertPoint, exports.liftTarget = assign$2.liftTarget, exports.findWrapping = assign$2.findWrapping))
 ;var assign$3;
-((assign$3 = map, exports.StepMap = assign$3.StepMap, exports.MapResult = assign$3.MapResult, exports.Mapping = assign$3.Mapping))
+((assign$3 = map$1, exports.StepMap = assign$3.StepMap, exports.MapResult = assign$3.MapResult, exports.Mapping = assign$3.Mapping))
 ;var assign$4;
 ((assign$4 = mark_step, exports.AddMarkStep = assign$4.AddMarkStep, exports.RemoveMarkStep = assign$4.RemoveMarkStep))
 ;var assign$5;
 ((assign$5 = replace_step, exports.ReplaceStep = assign$5.ReplaceStep, exports.ReplaceAroundStep = assign$5.ReplaceAroundStep));
 var assign$6;
-((assign$6 = replace$2, exports.replaceStep = assign$6.replaceStep));
+((assign$6 = replace$3, exports.replaceStep = assign$6.replaceStep));
 });
 
 var ref = index$2;
@@ -7297,7 +7297,7 @@ function moveSelectionBlock(state, dir) {
   return $start && Selection$4.findFrom($start, dir)
 }
 
-function apply(view, sel) {
+function apply$1(view, sel) {
   view.dispatch(view.state.tr.setSelection(sel).scrollIntoView());
   return true
 }
@@ -7311,7 +7311,7 @@ function selectHorizontally(view, dir) {
   if (!empty && !node) { return false }
 
   if (node && node.isInline)
-    { return apply(view, new TextSelection$2(dir > 0 ? $to : $from)) }
+    { return apply$1(view, new TextSelection$2(dir > 0 ? $to : $from)) }
 
   if (!node && !view.endOfTextblock(dir > 0 ? "right" : "left")) {
     var ref$1 = dir > 0
@@ -7320,13 +7320,13 @@ function selectHorizontally(view, dir) {
     var nextNode = ref$1.node;
     var offset = ref$1.offset;
     if (nextNode && NodeSelection$2.isSelectable(nextNode) && offset == $from.parentOffset - (dir > 0 ? 0 : nextNode.nodeSize))
-      { return apply(view, new NodeSelection$2(dir < 0 ? view.state.doc.resolve($from.pos - nextNode.nodeSize) : $from)) }
+      { return apply$1(view, new NodeSelection$2(dir < 0 ? view.state.doc.resolve($from.pos - nextNode.nodeSize) : $from)) }
     return false
   }
 
   var next = moveSelectionBlock(view.state, dir);
   if (next && (next instanceof NodeSelection$2 || node))
-    { return apply(view, next) }
+    { return apply$1(view, next) }
 
   return false
 }
@@ -7447,13 +7447,13 @@ function selectVertically(view, dir) {
   if (leavingTextblock) {
     var next = moveSelectionBlock(view.state, dir);
     if (next && (next instanceof NodeSelection$2))
-      { return apply(view, next) }
+      { return apply$1(view, next) }
   }
 
   if (!node || node.isInline) { return false }
 
   var beyond = Selection$4.findFrom($start, dir);
-  return beyond ? apply(view, beyond) : true
+  return beyond ? apply$1(view, beyond) : true
 }
 
 function stopNativeHorizontalDelete(view, dir) {
@@ -10042,7 +10042,7 @@ var GOOD_LEAF_SIZE = 200;
 // :: class<T> A rope sequence is a persistent sequence data structure
 // that supports appending, prepending, and slicing without doing a
 // full copy. It is represented as a mostly-balanced tree.
-var RopeSequence$1 = function RopeSequence () {};
+var RopeSequence$1 = function RopeSequence$1 () {};
 
 RopeSequence$1.prototype.append = function append (other) {
   if (!other.length) { return this }
@@ -10509,7 +10509,7 @@ var DEPTH_OVERFLOW = 20;
 
 // : (EditorState, Transform, Selection, Object)
 // Record a transformation in undo history.
-function applyTransaction(history, selection, tr, options) {
+function applyTransaction$1(history, selection, tr, options) {
   var newState = tr.getMeta(historyKey), rebased;
   if (newState) {
     return newState
@@ -10624,7 +10624,7 @@ function history(config) {
         return new HistoryState(Branch.empty, Branch.empty, null, 0)
       },
       apply: function apply(tr, hist, state) {
-        return applyTransaction(hist, state.selection, tr, config)
+        return applyTransaction$1(hist, state.selection, tr, config)
       }
     },
 
@@ -10824,7 +10824,7 @@ function normalizeKeyName(name) {
   return result
 }
 
-function normalize(map) {
+function normalize$1(map) {
   var copy = Object.create(null);
   for (var prop in map) { copy[normalizeKeyName(prop)] = map[prop]; }
   return copy
@@ -10869,7 +10869,7 @@ function modifiers(name, event, shift) {
 // which they appear determines their precedence (the ones early in
 // the array get to dispatch first).
 function keymap(bindings) {
-  var map = normalize(bindings);
+  var map = normalize$1(bindings);
 
   return new Plugin$2({
     props: {
@@ -11144,7 +11144,7 @@ var Bernoullis = "ℬ";
 var Beta = "Β";
 var beta = "β";
 var beth = "ℶ";
-var between = "≬";
+var between$1 = "≬";
 var Bfr = "𝔅";
 var bfr = "𝔟";
 var bigcap = "⋂";
@@ -11329,7 +11329,7 @@ var copf = "𝕔";
 var Copf = "ℂ";
 var coprod = "∐";
 var Coproduct = "∐";
-var copy$1 = "©";
+var copy$2 = "©";
 var COPY = "©";
 var copysr = "℗";
 var CounterClockwiseContourIntegral = "∳";
@@ -11766,7 +11766,7 @@ var IJlig = "Ĳ";
 var ijlig = "ĳ";
 var Imacr = "Ī";
 var imacr = "ī";
-var image = "ℑ";
+var image$1 = "ℑ";
 var ImaginaryI = "ⅈ";
 var imagline = "ℐ";
 var imagpart = "ℑ";
@@ -12063,7 +12063,7 @@ var macr = "¯";
 var male = "♂";
 var malt = "✠";
 var maltese = "✠";
-var map$2 = "↦";
+var map$3 = "↦";
 var mapsto = "↦";
 var mapstodown = "↧";
 var mapstoleft = "↤";
@@ -12897,7 +12897,7 @@ var tint = "∭";
 var toea = "⤨";
 var topbot = "⌶";
 var topcir = "⫱";
-var top = "⊤";
+var top$1 = "⊤";
 var Topf = "𝕋";
 var topf = "𝕥";
 var topfork = "⫚";
@@ -13268,7 +13268,7 @@ var entities$2 = {
 	Beta: Beta,
 	beta: beta,
 	beth: beth,
-	between: between,
+	between: between$1,
 	Bfr: Bfr,
 	bfr: bfr,
 	bigcap: bigcap,
@@ -13453,7 +13453,7 @@ var entities$2 = {
 	Copf: Copf,
 	coprod: coprod,
 	Coproduct: Coproduct,
-	copy: copy$1,
+	copy: copy$2,
 	COPY: COPY,
 	copysr: copysr,
 	CounterClockwiseContourIntegral: CounterClockwiseContourIntegral,
@@ -13890,7 +13890,7 @@ var entities$2 = {
 	ijlig: ijlig,
 	Imacr: Imacr,
 	imacr: imacr,
-	image: image,
+	image: image$1,
 	ImaginaryI: ImaginaryI,
 	imagline: imagline,
 	imagpart: imagpart,
@@ -14187,7 +14187,7 @@ var entities$2 = {
 	male: male,
 	malt: malt,
 	maltese: maltese,
-	map: map$2,
+	map: map$3,
 	mapsto: mapsto,
 	mapstodown: mapstodown,
 	mapstoleft: mapstoleft,
@@ -15021,7 +15021,7 @@ var entities$2 = {
 	toea: toea,
 	topbot: topbot,
 	topcir: topcir,
-	top: top,
+	top: top$1,
 	Topf: Topf,
 	topf: topf,
 	topfork: topfork,
@@ -15396,7 +15396,7 @@ var entities$3 = Object.freeze({
 	Beta: Beta,
 	beta: beta,
 	beth: beth,
-	between: between,
+	between: between$1,
 	Bfr: Bfr,
 	bfr: bfr,
 	bigcap: bigcap,
@@ -15581,7 +15581,7 @@ var entities$3 = Object.freeze({
 	Copf: Copf,
 	coprod: coprod,
 	Coproduct: Coproduct,
-	copy: copy$1,
+	copy: copy$2,
 	COPY: COPY,
 	copysr: copysr,
 	CounterClockwiseContourIntegral: CounterClockwiseContourIntegral,
@@ -16018,7 +16018,7 @@ var entities$3 = Object.freeze({
 	ijlig: ijlig,
 	Imacr: Imacr,
 	imacr: imacr,
-	image: image,
+	image: image$1,
 	ImaginaryI: ImaginaryI,
 	imagline: imagline,
 	imagpart: imagpart,
@@ -16315,7 +16315,7 @@ var entities$3 = Object.freeze({
 	male: male,
 	malt: malt,
 	maltese: maltese,
-	map: map$2,
+	map: map$3,
 	mapsto: mapsto,
 	mapstodown: mapstodown,
 	mapstoleft: mapstoleft,
@@ -17149,7 +17149,7 @@ var entities$3 = Object.freeze({
 	toea: toea,
 	topbot: topbot,
 	topcir: topcir,
-	top: top,
+	top: top$1,
 	Topf: Topf,
 	topf: topf,
 	topfork: topfork,
@@ -17416,7 +17416,7 @@ var entities$3 = Object.freeze({
 	default: entities$2
 });
 
-var require$$0$7 = ( entities$3 && entities$2 ) || entities$3;
+var require$$0$7 = ( entities$3 && entities$3['default'] ) || entities$3;
 
 /*eslint quotes:0*/
 var entities = require$$0$7;
@@ -17637,7 +17637,7 @@ decode$1.componentChars = '';
 
 var decode_1 = decode$1;
 
-var format$1 = function format(url) {
+var format$1 = function format$1(url) {
   var result = '';
 
   result += url.protocol || '';
@@ -17951,18 +17951,18 @@ Url.prototype.parseHost = function(host) {
   if (host) { this.hostname = host; }
 };
 
-var parse$1 = urlParse;
+var parse$2 = urlParse;
 
 var encode = encode_1;
 var decode = decode_1;
 var format = format$1;
-var parse = parse$1;
+var parse$1 = parse$2;
 
 var index$20 = {
 	encode: encode,
 	decode: decode,
 	format: format,
-	parse: parse
+	parse: parse$1
 };
 
 var regex$2=/[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
@@ -18437,14 +18437,14 @@ var parse_link_title = function parseLinkTitle(str, pos, max) {
   return result;
 };
 
-var parseLinkLabel = parse_link_label;
-var parseLinkDestination = parse_link_destination;
-var parseLinkTitle = parse_link_title;
+var parseLinkLabel$1 = parse_link_label;
+var parseLinkDestination$1 = parse_link_destination;
+var parseLinkTitle$1 = parse_link_title;
 
 var index$24 = {
-	parseLinkLabel: parseLinkLabel,
-	parseLinkDestination: parseLinkDestination,
-	parseLinkTitle: parseLinkTitle
+	parseLinkLabel: parseLinkLabel$1,
+	parseLinkDestination: parseLinkDestination$1,
+	parseLinkTitle: parseLinkTitle$1
 };
 
 var assign          = utils$1.assign;
@@ -19131,7 +19131,7 @@ var NEWLINES_RE  = /\r[\n\u0085]?|[\u2424\u2028\u0085]/g;
 var NULL_RE      = /\u0000/g;
 
 
-var normalize$1 = function inline(state) {
+var normalize$2 = function inline(state) {
   var str;
 
   // Normalize newlines
@@ -19143,7 +19143,7 @@ var normalize$1 = function inline(state) {
   state.src = str;
 };
 
-var block$1 = function block(state) {
+var block$1 = function block$1(state) {
   var token;
 
   if (state.inlineMode) {
@@ -19157,7 +19157,7 @@ var block$1 = function block(state) {
   }
 };
 
-var inline = function inline(state) {
+var inline$1 = function inline$1(state) {
   var tokens = state.tokens, tok, i, l;
 
   // Parse inlines
@@ -19789,9 +19789,9 @@ var Ruler  = ruler;
 
 
 var _rules = [
-  [ 'normalize',      normalize$1      ],
+  [ 'normalize',      normalize$2      ],
   [ 'block',          block$1          ],
-  [ 'inline',         inline         ],
+  [ 'inline',         inline$1         ],
   [ 'linkify',        linkify        ],
   [ 'replacements',   replacements   ],
   [ 'smartquotes',    smartquotes    ]
@@ -20009,7 +20009,7 @@ var table = function table(state, startLine, endLine, silent) {
 
 // Code block (4 spaces padded)
 
-var code$1 = function code(state, startLine, endLine/*, silent*/) {
+var code$1 = function code$1(state, startLine, endLine/*, silent*/) {
   var nextLine, last, token, emptyLines = 0;
 
   if (state.sCount[startLine] - state.blkIndent < 4) { return false; }
@@ -20141,7 +20141,7 @@ var fence = function fence(state, startLine, endLine, silent) {
 var isSpace$1 = utils$1.isSpace;
 
 
-var blockquote = function blockquote(state, startLine, endLine, silent) {
+var blockquote$1 = function blockquote$1(state, startLine, endLine, silent) {
   var nextLine, lastLineEmpty, oldTShift, oldSCount, oldBMarks, oldIndent, oldParentType, lines, initial, offset, ch,
       terminatorRules, token,
       i, l, terminate,
@@ -20655,8 +20655,8 @@ var list = function list(state, startLine, endLine, silent) {
   return true;
 };
 
-var parseLinkDestination$1 = parse_link_destination;
-var parseLinkTitle$1       = parse_link_title;
+var parseLinkDestination$2 = parse_link_destination;
+var parseLinkTitle$2       = parse_link_title;
 var normalizeReference   = utils$1.normalizeReference;
 var isSpace$4              = utils$1.isSpace;
 
@@ -20756,7 +20756,7 @@ var reference = function reference(state, startLine, _endLine, silent) {
 
   // [label]:   destination   'title'
   //            ^^^^^^^^^^^ parse this
-  res = parseLinkDestination$1(str, pos, max);
+  res = parseLinkDestination$2(str, pos, max);
   if (!res.ok) { return false; }
 
   href = state.md.normalizeLink(res.str);
@@ -20785,7 +20785,7 @@ var reference = function reference(state, startLine, _endLine, silent) {
 
   // [label]:   destination   'title'
   //                          ^^^^^^^ parse this
-  res = parseLinkTitle$1(str, pos, max);
+  res = parseLinkTitle$2(str, pos, max);
   if (pos < max && start !== pos && res.ok) {
     title = res.str;
     pos = res.pos;
@@ -20847,7 +20847,7 @@ var reference = function reference(state, startLine, _endLine, silent) {
 var isSpace$5 = utils$1.isSpace;
 
 
-var heading = function heading(state, startLine, endLine, silent) {
+var heading$1 = function heading$1(state, startLine, endLine, silent) {
   var ch, level, tmp, token,
       pos = state.bMarks[startLine] + state.tShift[startLine],
       max = state.eMarks[startLine];
@@ -21133,7 +21133,7 @@ var html_block = function html_block(state, startLine, endLine, silent) {
 
 // Paragraph
 
-var paragraph = function paragraph(state, startLine/*, endLine*/) {
+var paragraph$1 = function paragraph$1(state, startLine/*, endLine*/) {
   var content, terminate, i, l, token,
       nextLine = startLine + 1,
       terminatorRules = state.md.block.ruler.getRules('paragraph'),
@@ -21389,14 +21389,14 @@ var _rules$1 = [
   [ 'table',      table,      [ 'paragraph', 'reference' ] ],
   [ 'code',       code$1 ],
   [ 'fence',      fence,      [ 'paragraph', 'reference', 'blockquote', 'list' ] ],
-  [ 'blockquote', blockquote, [ 'paragraph', 'reference', 'list' ] ],
+  [ 'blockquote', blockquote$1, [ 'paragraph', 'reference', 'list' ] ],
   [ 'hr',         hr,         [ 'paragraph', 'reference', 'blockquote', 'list' ] ],
   [ 'list',       list,       [ 'paragraph', 'reference', 'blockquote' ] ],
   [ 'reference',  reference ],
-  [ 'heading',    heading,    [ 'paragraph', 'reference', 'blockquote' ] ],
+  [ 'heading',    heading$1,    [ 'paragraph', 'reference', 'blockquote' ] ],
   [ 'lheading',   lheading ],
   [ 'html_block', html_block, [ 'paragraph', 'reference', 'blockquote' ] ],
-  [ 'paragraph',  paragraph ]
+  [ 'paragraph',  paragraph$1 ]
 ];
 
 
@@ -21539,7 +21539,7 @@ function isTerminatorChar(ch) {
   }
 }
 
-var text = function text(state, silent) {
+var text$1 = function text$1(state, silent) {
   var pos = state.pos;
 
   while (pos < state.posMax && !isTerminatorChar(state.src.charCodeAt(pos))) {
@@ -21960,9 +21960,9 @@ var emphasis = {
 	postProcess: postProcess$1
 };
 
-var parseLinkLabel$1       = parse_link_label;
-var parseLinkDestination$2 = parse_link_destination;
-var parseLinkTitle$2       = parse_link_title;
+var parseLinkLabel$2       = parse_link_label;
+var parseLinkDestination$3 = parse_link_destination;
+var parseLinkTitle$3       = parse_link_title;
 var normalizeReference$1   = utils$1.normalizeReference;
 var isSpace$8              = utils$1.isSpace;
 
@@ -21986,7 +21986,7 @@ var link = function link(state, silent) {
   if (state.src.charCodeAt(state.pos) !== 0x5B/* [ */) { return false; }
 
   labelStart = state.pos + 1;
-  labelEnd = parseLinkLabel$1(state, state.pos, true);
+  labelEnd = parseLinkLabel$2(state, state.pos, true);
 
   // parser failed to find ']', so it's not a valid link
   if (labelEnd < 0) { return false; }
@@ -22009,7 +22009,7 @@ var link = function link(state, silent) {
     // [link](  <href>  "title"  )
     //          ^^^^^^ parsing link destination
     start = pos;
-    res = parseLinkDestination$2(state.src, pos, state.posMax);
+    res = parseLinkDestination$3(state.src, pos, state.posMax);
     if (res.ok) {
       href = state.md.normalizeLink(res.str);
       if (state.md.validateLink(href)) {
@@ -22029,7 +22029,7 @@ var link = function link(state, silent) {
 
     // [link](  <href>  "title"  )
     //                  ^^^^^^^ parsing link title
-    res = parseLinkTitle$2(state.src, pos, state.posMax);
+    res = parseLinkTitle$3(state.src, pos, state.posMax);
     if (pos < max && start !== pos && res.ok) {
       title = res.str;
       pos = res.pos;
@@ -22057,7 +22057,7 @@ var link = function link(state, silent) {
 
     if (pos < max && state.src.charCodeAt(pos) === 0x5B/* [ */) {
       start = pos + 1;
-      pos = parseLinkLabel$1(state, pos);
+      pos = parseLinkLabel$2(state, pos);
       if (pos >= 0) {
         label = state.src.slice(start, pos++);
       } else {
@@ -22104,14 +22104,14 @@ var link = function link(state, silent) {
   return true;
 };
 
-var parseLinkLabel$2       = parse_link_label;
-var parseLinkDestination$3 = parse_link_destination;
-var parseLinkTitle$3       = parse_link_title;
+var parseLinkLabel$3       = parse_link_label;
+var parseLinkDestination$4 = parse_link_destination;
+var parseLinkTitle$4       = parse_link_title;
 var normalizeReference$2   = utils$1.normalizeReference;
 var isSpace$9              = utils$1.isSpace;
 
 
-var image$1 = function image(state, silent) {
+var image$2 = function image$2(state, silent) {
   var attrs,
       code,
       content,
@@ -22133,7 +22133,7 @@ var image$1 = function image(state, silent) {
   if (state.src.charCodeAt(state.pos + 1) !== 0x5B/* [ */) { return false; }
 
   labelStart = state.pos + 2;
-  labelEnd = parseLinkLabel$2(state, state.pos + 1, false);
+  labelEnd = parseLinkLabel$3(state, state.pos + 1, false);
 
   // parser failed to find ']', so it's not a valid link
   if (labelEnd < 0) { return false; }
@@ -22156,7 +22156,7 @@ var image$1 = function image(state, silent) {
     // [link](  <href>  "title"  )
     //          ^^^^^^ parsing link destination
     start = pos;
-    res = parseLinkDestination$3(state.src, pos, state.posMax);
+    res = parseLinkDestination$4(state.src, pos, state.posMax);
     if (res.ok) {
       href = state.md.normalizeLink(res.str);
       if (state.md.validateLink(href)) {
@@ -22176,7 +22176,7 @@ var image$1 = function image(state, silent) {
 
     // [link](  <href>  "title"  )
     //                  ^^^^^^^ parsing link title
-    res = parseLinkTitle$3(state.src, pos, state.posMax);
+    res = parseLinkTitle$4(state.src, pos, state.posMax);
     if (pos < max && start !== pos && res.ok) {
       title = res.str;
       pos = res.pos;
@@ -22204,7 +22204,7 @@ var image$1 = function image(state, silent) {
 
     if (pos < max && state.src.charCodeAt(pos) === 0x5B/* [ */) {
       start = pos + 1;
-      pos = parseLinkLabel$2(state, pos);
+      pos = parseLinkLabel$3(state, pos);
       if (pos >= 0) {
         label = state.src.slice(start, pos++);
       } else {
@@ -22612,14 +22612,14 @@ var Ruler$3           = ruler;
 // Parser rules
 
 var _rules$2 = [
-  [ 'text',            text ],
+  [ 'text',            text$1 ],
   [ 'newline',         newline ],
   [ 'escape',          _escape ],
   [ 'backticks',       backticks ],
   [ 'strikethrough',   strikethrough.tokenize ],
   [ 'emphasis',        emphasis.tokenize ],
   [ 'link',            link ],
-  [ 'image',           image$1 ],
+  [ 'image',           image$2 ],
   [ 'autolink',        autolink ],
   [ 'html_inline',     html_inline ],
   [ 'entity',          entity ]
@@ -25406,4 +25406,3 @@ ready(function () {
 });
 
 }());
-//# sourceMappingURL=main.js.map
