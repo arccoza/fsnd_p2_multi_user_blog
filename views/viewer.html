@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import 'controls-macro.html' as controls %}
+{% block body %}
+<section class="main">
+  <header class="header">
+    <div class="header__inner">
+      {% block header__inner %}
+      {% endblock %}
+    </div>
+    </div>
+  </header>
+  <section class="frame">
+    <div class="frame__inner">
+      {% block frame__inner %}
+      {% endblock %}
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer__inner">
+      {% block footer__inner %}
+      footer
+      {% endblock %}
+    </div>
+  </footer>
+</section>
+{% endblock %}

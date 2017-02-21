@@ -4,15 +4,19 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% block head_scripts %}
+  {% block styles %}
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700,700i" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+  {% endblock %}
+  {% block scripts %}
   <script type="text/javascript" src="/static/js/main.js"></script>
   {% endblock %}
 
   <title>{{page.title}}{{' - ' + page.subtitle if page and page.subtitle else ''}}</title>
 </head>
 <body>
-  {% block body_content %}
+  {% include "svg-icons.html" ignore missing %}
+  {% block body %}
   {% endblock %}
 </body>
 </html>

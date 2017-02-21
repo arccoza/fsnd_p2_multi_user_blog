@@ -1,0 +1,44 @@
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.icon--name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+.icon {
+  transition: transform 0.2s linear;
+}
+
+.icon:hover {
+  transform: scale(1.5);
+}
+
+.icon--file-add:hover {
+  color: green;
+}
+
+.icon--file:hover {
+  color: blue;
+}
+
+.icon--file-subtract:hover {
+  color: red;
+}
+
+.icon--heart:hover, .icon--heart--active {
+  color: pink;
+}
+
+.icon--speech-bubble:hover {
+  color: blue;
+}

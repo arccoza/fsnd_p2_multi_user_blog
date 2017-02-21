@@ -1,0 +1,35 @@
+{% macro auth(user=None) -%}
+<div class="auth">
+  <a href="/signout" title="Signout.">
+    <svg class="icon icon--arrow-up"><use xlink:href="#icon--arrow-up"></use></svg>
+  </a>
+  <a href="/signin" title="Signin.">
+    <svg class="icon icon--arrow-down"><use xlink:href="#icon--arrow-down"></use></svg>
+  </a>
+  <a href="/signup" title="Signup.">
+    <svg class="icon icon--head"><use xlink:href="#icon--head"></use></svg>
+  </a>
+</div>
+{%- endmacro %}
+
+{% macro post(user=None, comments=False) -%}
+<aside class="post__controls">
+  <a href="/edit" title="New post.">
+    <svg class="icon icon--file-add"><use xlink:href="#icon--file-add"></use></svg>
+  </a>
+  <a href="/edit" title="Edit post.">
+    <svg class="icon icon--file"><use xlink:href="#icon--file"></use></svg>
+  </a>
+  <a href="" title="Delete post.">
+    <svg class="icon icon--file-subtract"><use xlink:href="#icon--file-subtract"></use></svg>
+  </a>
+  <a href="/fav" title="Favorite post.">
+    <svg class="icon icon--heart"><use xlink:href="#icon--heart"></use></svg>
+  </a>
+  {% if comments %}
+  <a href="#comments" title="Add comment.">
+    <svg class="icon icon--speech-bubble"><use xlink:href="#icon--speech-bubble"></use></svg>
+  </a>
+  {% endif %}
+</aside>
+{%- endmacro %}

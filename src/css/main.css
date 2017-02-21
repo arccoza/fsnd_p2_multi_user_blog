@@ -1,6 +1,134 @@
 @import "normalize.css";
+@import "svg-icons.css";
 
 
 * {
   box-sizing: border-box;
+}
+
+html, body, .main {
+  position: relative;
+  /*min-width: 100vw;*/
+  /*min-height: 100vh;*/
+  background: color(silver tint(90%));
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #444;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-weight: 400;
+  color: #444;
+}
+
+a, a:link, a:visited {
+  color: orange;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: red;
+}
+
+.main {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  /*align-items: center;
+  align-content: center;
+  justify-content: space-between;*/
+}
+
+.header, .frame, .footer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.header__inner, .frame__inner, .footer__inner {
+  position: relative;
+  background: #fff;
+  width: 1020px;
+  padding: 1em;
+  border-left: 1px solid color(silver tint(60%));
+  border-right: 1px solid color(silver tint(60%));
+}
+
+.header {
+  border-bottom: 1px solid color(silver tint(60%));
+}
+
+.header__inner {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.title {
+  flex: 1;
+}
+
+.auth {
+  opacity: 0.5;
+  font-size: 1.5em;
+  transition: opacity 0.2s linear;
+}
+
+.auth:hover {
+  opacity: 1;
+}
+
+.frame {
+  flex: 1;
+}
+
+.frame__inner {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.footer {
+  border-top: 1px solid color(silver tint(60%));
+}
+
+.posts {
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.post {
+  min-height: 16em;
+  margin-bottom: 2em;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.post__controls {
+  opacity: 0.5;
+  padding-right: 1em;
+  display: flex;
+  flex-flow: column;
+  transition: opacity 0.2s linear;
+}
+
+.post__controls:hover {
+  opacity: 1;
+}
+
+.post__controls > * {
+  margin-bottom: 1em;
+}
+
+.post__content {
+  flex: 1;
 }

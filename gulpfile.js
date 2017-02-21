@@ -8,7 +8,9 @@ var json = require('rollup-plugin-json');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
-var atImport = require("postcss-import")
+var atImport = require("postcss-import");
+var aseColors = require('postcss-ase-colors');
+var colorFunction = require("postcss-color-function")
 var print = console.log.bind(console);
 
  
@@ -41,6 +43,8 @@ gulp.task('build:js', () => {
 gulp.task('build:css', function () {
   var processors = [
     atImport(),
+    aseColors({file: 'node_modules/colors.css/assets/colors-css.ase'}),
+    colorFunction(),
     autoprefixer(),
     // cssnano()
   ]
