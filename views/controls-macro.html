@@ -17,26 +17,45 @@
 </div>
 {%- endmacro %}
 
-{% macro post(user=None, post=None, comments=False) -%}
-<aside class="post__controls">
+{% macro item(user=None, post=None, new=True, add=True, rem=True, favourite=True, comments=False, class="item__controls") -%}
+<div class="{{class}}">
   {% if user %}
-  <a href="/edit" title="New post.">
+  {% if new %}
+  <a href="/edit/" title="New post.">
     <svg class="icon icon--control icon--file-add"><use xlink:href="#icon--file-add"></use></svg>
   </a>
-  <a href="/edit" title="Edit post.">
+  {% endif %}
+  {% if add %}
+  <a href="/edit/{{post.id}}" title="Edit post.">
     <svg class="icon icon--control icon--file"><use xlink:href="#icon--file"></use></svg>
   </a>
-  <a href="" title="Delete post.">
-    <svg class="icon icon--control icon--file-subtract"><use xlink:href="#icon--file-subtract"></use></svg>
-  </a>
   {% endif %}
-  <a href="/fav" title="Favorite post.">
+  <!-- <a href="" title="Delete post.">
+    <svg class="icon icon--control icon--file-subtract"><use xlink:href="#icon--file-subtract"></use></svg>
+  </a> -->
+  {% endif %}
+  {% if favourite %}
+  <a href="/fav" title="Favourite post.">
     <svg class="icon icon--control icon--heart"><use xlink:href="#icon--heart"></use></svg>
   </a>
+  {% endif %}
   {% if comments %}
   <a href="#comments" title="Add comment.">
     <svg class="icon icon--control icon--speech-bubble"><use xlink:href="#icon--speech-bubble"></use></svg>
   </a>
   {% endif %}
-</aside>
+</div>
+{%- endmacro %}
+
+{% macro confirm(user=None, post=None, class='confirm-controls') -%}
+<div class="{{class}}">
+  {% if user %}
+  <button name="save" value="save" class="{{class}}__button" title="Save.">
+    <svg class="icon icon--control icon--check"><use xlink:href="#icon--check"></use></svg>
+  </button>
+  <button name="cancel" value="cancel" class="{{class}}__button" title="Cancel.">
+    <svg class="icon icon--control icon--cross"><use xlink:href="#icon--cross"></use></svg>
+  </button>
+  {% endif %}
+</div>
 {%- endmacro %}

@@ -12,12 +12,19 @@ sec = Security(app, 'shh')
 @app.route("/")
 def root():
   user = None
-  print(repr(sec.token))
   if sec.token.get('usr'):
-    print(sec.token.get('usr'))
     user = User()
     user.fill(username=sec.token.get('usr'))
   return render_template('index.html', page=None, user=user)
+
+
+@app.route("/edit/")
+def edit():
+  user = None
+  if sec.token.get('usr'):
+    user = User()
+    user.fill(username=sec.token.get('usr'))
+  return render_template('edit.html', page=None, user=user)
 
 
 @app.route("/signup/", methods=['GET', 'POST'])

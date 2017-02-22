@@ -542,7 +542,7 @@ a:hover, a:active {
   color: #FF4136;
 }
 
-input[type=text], input[type=password], input[type=submit], button {
+input[type=text], textarea, input[type=password], input[type=submit], button {
   padding: 0.5em 0.6em;
   border: none;
   border-radius: 3px;
@@ -686,7 +686,7 @@ input[type=submit] *, button * {
   transition: opacity 0.2s linear;
 }
 
-.auth:hover {
+.auth-controls:hover {
   opacity: 1;
 }
 
@@ -713,7 +713,7 @@ input[type=submit] *, button * {
   border-top: 1px solid rgb(241, 241, 241);
 }
 
-.posts {
+.items {
   padding: 0;
   margin: 0;
   -webkit-box-flex: 1;
@@ -728,7 +728,7 @@ input[type=submit] *, button * {
           flex-flow: column nowrap;
 }
 
-.post {
+.item {
   min-height: 16em;
   margin-bottom: 2em;
   display: -webkit-box;
@@ -745,7 +745,7 @@ input[type=submit] *, button * {
           align-items: stretch;
 }
 
-.post__controls {
+.item__controls {
   opacity: 0.5;
   padding-right: 1em;
   display: -webkit-box;
@@ -759,15 +759,15 @@ input[type=submit] *, button * {
   transition: opacity 0.2s linear;
 }
 
-.post__controls:hover {
+.item__controls:hover {
   opacity: 1;
 }
 
-.post__controls > * {
+.item__controls > * {
   margin-bottom: 1em;
 }
 
-.post__content {
+.post {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -818,3 +818,75 @@ input[type=submit] *, button * {
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
+
+.editor {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+.editor__frame {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.edit-confirm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.edit-confirm__button {
+  background: none;
+  color: #39CCCC;
+  padding: 0;
+  margin: 0 0 1em 0;
+}
+
+.edit-post {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.edit-post__title {
+}
+
+.edit-post__content {
+  margin-top: 1em;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+

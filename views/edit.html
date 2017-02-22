@@ -1,0 +1,19 @@
+{% extends "viewer.html" %}
+{% block header__inner %}
+<h1 class="title">MUBlog</h1>
+{{ controls.auth(user=user) }}
+{% endblock %}
+{% block frame__inner %}
+<form method="post" action="{{form_action}}" class="editor">
+  <aside class="editor__controls">
+  {{ controls.confirm(user=user, class="edit-confirm") }}
+  {{ controls.item(user=user, favourite=False, new=True, add=False, rem=False) }}
+  </aside>
+  <section class="editor__frame">
+    <div class="edit-post">
+      <input type="text" name="subject" value="" placeholder="Enter your post title." class="edit-post__title">
+      <textarea name="content" placeholder="Type your post here, markdown accepted." class="edit-post__content"></textarea>
+    </div>
+  </section>
+</form>
+{% endblock %}
