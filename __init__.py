@@ -21,6 +21,7 @@ def root():
 
 
 @app.route("/signup/", methods=['GET', 'POST'])
+@sec.allow(lambda t: not t.get('usr'), lambda: redirect(url_for('root')))
 def signup():
   user = None
   pass_verified = None
@@ -44,6 +45,7 @@ def signup():
 
 
 @app.route("/signin/", methods=['GET', 'POST'])
+@sec.allow(lambda t: not t.get('usr'), lambda: redirect(url_for('root')))
 def signin():
   user = None
   user_verified = False
@@ -71,6 +73,7 @@ def signin():
 
 
 @app.route("/signout/", methods=['GET', 'POST'])
+@sec.allow(lambda t: t.get('usr'), lambda: redirect(url_for('signin')))
 def signout():
   if request.method == 'POST':
     if request.form.get('cancel'):
