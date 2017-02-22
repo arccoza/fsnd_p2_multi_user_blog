@@ -15,30 +15,30 @@ Single-colored icons can be modified like so:
 }
 ========================================== */
 
-.icon {
+.icon--control {
   transition: transform 0.2s linear;
 }
 
-.icon:hover {
+.icon--control:hover {
   transform: scale(1.5);
 }
 
-.icon--file-add:hover {
+.icon--control.icon--file-add:hover {
   color: green;
 }
 
-.icon--file:hover {
+.icon--control.icon--file:hover {
   color: blue;
 }
 
-.icon--file-subtract:hover {
+.icon--control.icon--file-subtract:hover {
   color: red;
 }
 
-.icon--heart:hover, .icon--heart--active {
-  color: pink;
+.icon--control.icon--heart:hover, .icon--heart--active {
+  color: fuchsia;
 }
 
-.icon--speech-bubble:hover {
+.icon--control.icon--speech-bubble:hover {
   color: blue;
 }

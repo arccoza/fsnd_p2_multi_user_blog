@@ -1,0 +1,20 @@
+{% extends "auth.html" %}
+{% block auth__title %}
+Signin
+{% endblock %}
+{% block auth__content %}
+<input type="text" name="username" value="{{user.username or ''}}" placeholder="Enter your username"
+  class="{{ 'input--error' if user and not user_verified else '' }}">
+<input type="password" name="password" value="" placeholder="Enter your password"
+  class="{{ 'input--error' if user and not pass_verified else '' }}">
+{% endblock %}
+{% block auth__controls %}
+<button name="ok" value="ok">
+  <span>signin</span>
+  <svg class="button__icon--end icon icon--check"><use xlink:href="#icon--check"></use></svg>
+</button>
+<button name="cancel" value="cancel" class="button--red">
+  <span>cancel</span>
+  <svg class="button__icon--end icon icon--cross"><use xlink:href="#icon--cross"></use></svg>
+</button>
+{% endblock %}

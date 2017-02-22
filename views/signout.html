@@ -1,0 +1,17 @@
+{% extends "auth.html" %}
+{% block auth__title %}
+Signout
+{% endblock %}
+{% block auth__content %}
+<p>Are you sure?</p>
+{% endblock %}
+{% block auth__controls %}
+<button name="ok" value="ok">
+  <span>signout</span>
+  <svg class="button__icon--end icon icon--check"><use xlink:href="#icon--check"></use></svg>
+</button>
+<button name="cancel" value="cancel" class="button--red">
+  <span>cancel</span>
+  <svg class="button__icon--end icon icon--cross"><use xlink:href="#icon--cross"></use></svg>
+</button>
+{% endblock %}

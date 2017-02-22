@@ -10,7 +10,7 @@ html, body, .main {
   position: relative;
   /*min-width: 100vw;*/
   /*min-height: 100vh;*/
-  background: color(silver tint(90%));
+  /*background: color(silver tint(90%));*/
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   color: #444;
@@ -22,8 +22,12 @@ h1, h2, h3, h4, h5, h6 {
   color: #444;
 }
 
+a {
+  display: inline-block;
+}
+
 a, a:link, a:visited {
-  color: orange;
+  color: teal;
   text-decoration: none;
 }
 
@@ -31,14 +35,74 @@ a:hover, a:active {
   color: red;
 }
 
+input[type=text], input[type=password], input[type=submit], button {
+  padding: 0.5em 0.6em;
+  border: none;
+  border-radius: 3px;
+  margin: 0.2em;
+  outline: none;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  align-content: center;
+}
+
+input[type=text], input[type=password], textarea {
+  border: 2px solid color(teal tint(60%));
+}
+
+input[type=text]:hover, input[type=password]:hover, textarea:hover,
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+  border: 2px solid teal;
+}
+
+input[type=text].input--error, input[type=password].input--error, textarea.input--error {
+  border: 2px solid color(red tint(60%));
+}
+
+input[type=text].input--error:hover, input[type=password].input--error:hover, textarea.input--error:hover, 
+input[type=text].input--error:focus, input[type=password].input--error:hover, textarea.input--error:focus {
+  border: 2px solid red;
+}
+
+input[type=submit], button {
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+}
+
+input[type=submit].button--red, button.button--red {
+  background-color: red;
+}
+
+input[type=submit] *, button * {
+  cursor: pointer;
+}
+
+.button__icon--start {
+  margin-right: 1em;
+}
+
+.button__icon--end {
+  margin-left: 1em;
+}
+
 .main {
   position: relative;
   min-height: 100vh;
   display: flex;
   flex-flow: column nowrap;
-  /*align-items: center;
+}
+
+#index.main {
+  align-items: center;
   align-content: center;
-  justify-content: space-between;*/
+}
+
+#auth.main {
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
 }
 
 .header, .frame, .footer {
@@ -72,7 +136,7 @@ a:hover, a:active {
   flex: 1;
 }
 
-.auth {
+.auth-controls {
   opacity: 0.5;
   font-size: 1.5em;
   transition: opacity 0.2s linear;
@@ -131,4 +195,36 @@ a:hover, a:active {
 
 .post__content {
   flex: 1;
+}
+
+.dialog {
+  border: 1px solid color(silver tint(60%));
+  width: 420px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.dialog__title {
+  margin: 0;
+}
+
+.dialog__header, .dialog__frame, .dialog__footer {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.dialog__frame {
+  width: 420px;
+  padding-top: 0;
+  padding-bottom: 0;
+  justify-content: center;
+}
+
+.dialog__header {
+}
+
+.dialog__footer {
+  justify-content: flex-end;
 }

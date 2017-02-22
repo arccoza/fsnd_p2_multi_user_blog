@@ -1,12 +1,12 @@
 {% extends "viewer.html" %}
 {% block header__inner %}
 <h1 class="title">MUBlog</h1>
-{{ controls.auth() }}
+{{ controls.auth(user=user) }}
 {% endblock %}
 {% block frame__inner %}
 <ul class="posts">
   <li class="post">
-    {{ controls.post() }}
+    {{ controls.post(user=user) }}
     <section class="post__content">
       <article class="article">
         <h1>Title</h1>

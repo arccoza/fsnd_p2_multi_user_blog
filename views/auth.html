@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block body %}
+<section id="auth" class="main">
+  <form class="auth-box dialog" method="post" action={{form_action}}>
+    <header class="dialog__header">
+      <h2 class="dialog__title">
+        {% block auth__title %}
+        Sign-in|on|up
+        {% endblock %}
+      </h2>
+    </header>
+    <div class="dialog__frame">
+      {% block auth__content %}
+      <input type="text" name="username" value="" placeholder="Enter your username">
+      <input type="password" name="password" value="" placeholder="Enter your password">
+      <input type="password" name="verify" value="" placeholder="Retype your password">
+      <input type="text" name="email" value="" placeholder="Enter your email">
+      {% endblock %}
+    </div>
+    <footer class="dialog__footer">
+      {% block auth__controls %}
+      <button name="ok">
+        <label>ok</label>
+        <svg class="button__icon--end icon icon--check"><use xlink:href="#icon--check"></use></svg>
+      </button>
+      <button name="cancel">
+        <label>cancel</label>
+        <svg class="button__icon--end icon icon--cross"><use xlink:href="#icon--cross"></use></svg>
+      </button>
+      {% endblock %}
+    </footer>
+  </form>
+</section>
+{% endblock %}

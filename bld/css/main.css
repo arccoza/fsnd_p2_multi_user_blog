@@ -477,35 +477,35 @@ Single-colored icons can be modified like so:
 }
 ========================================== */
 
-.icon {
+.icon--control {
   -webkit-transition: -webkit-transform 0.2s linear;
   transition: -webkit-transform 0.2s linear;
   transition: transform 0.2s linear;
   transition: transform 0.2s linear, -webkit-transform 0.2s linear;
 }
 
-.icon:hover {
+.icon--control:hover {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
 }
 
-.icon--file-add:hover {
+.icon--control.icon--file-add:hover {
   color: #2ECC40;
 }
 
-.icon--file:hover {
+.icon--control.icon--file:hover {
   color: #0074D9;
 }
 
-.icon--file-subtract:hover {
+.icon--control.icon--file-subtract:hover {
   color: #FF4136;
 }
 
-.icon--heart:hover, .icon--heart--active {
-  color: pink;
+.icon--control.icon--heart:hover, .icon--heart--active {
+  color: #F012BE;
 }
 
-.icon--speech-bubble:hover {
+.icon--control.icon--speech-bubble:hover {
   color: #0074D9;
 }
 
@@ -517,7 +517,7 @@ html, body, .main {
   position: relative;
   /*min-width: 100vw;*/
   /*min-height: 100vh;*/
-  background: rgb(252, 252, 252);
+  /*background: color(silver tint(90%));*/
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   color: #444;
@@ -529,13 +529,77 @@ h1, h2, h3, h4, h5, h6 {
   color: #444;
 }
 
+a {
+  display: inline-block;
+}
+
 a, a:link, a:visited {
-  color: #FF851B;
+  color: #39CCCC;
   text-decoration: none;
 }
 
 a:hover, a:active {
   color: #FF4136;
+}
+
+input[type=text], input[type=password], input[type=submit], button {
+  padding: 0.5em 0.6em;
+  border: none;
+  border-radius: 3px;
+  margin: 0.2em;
+  outline: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+input[type=text], input[type=password], textarea {
+  border: 2px solid rgb(176, 235, 235);
+}
+
+input[type=text]:hover, input[type=password]:hover, textarea:hover,
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+  border: 2px solid #39CCCC;
+}
+
+input[type=text].input--error, input[type=password].input--error, textarea.input--error {
+  border: 2px solid rgb(255, 179, 175);
+}
+
+input[type=text].input--error:hover, input[type=password].input--error:hover, textarea.input--error:hover, 
+input[type=text].input--error:focus, input[type=password].input--error:hover, textarea.input--error:focus {
+  border: 2px solid #FF4136;
+}
+
+input[type=submit], button {
+  background-color: #39CCCC;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+input[type=submit].button--red, button.button--red {
+  background-color: #FF4136;
+}
+
+input[type=submit] *, button * {
+  cursor: pointer;
+}
+
+.button__icon--start {
+  margin-right: 1em;
+}
+
+.button__icon--end {
+  margin-left: 1em;
 }
 
 .main {
@@ -548,9 +612,24 @@ a:hover, a:active {
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
-  /*align-items: center;
-  align-content: center;
-  justify-content: space-between;*/
+}
+
+#index.main {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+#auth.main {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .header, .frame, .footer {
@@ -600,7 +679,7 @@ a:hover, a:active {
           flex: 1;
 }
 
-.auth {
+.auth-controls {
   opacity: 0.5;
   font-size: 1.5em;
   -webkit-transition: opacity 0.2s linear;
@@ -692,4 +771,50 @@ a:hover, a:active {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.dialog {
+  border: 1px solid rgb(241, 241, 241);
+  width: 420px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.dialog__title {
+  margin: 0;
+}
+
+.dialog__header, .dialog__frame, .dialog__footer {
+  width: 100%;
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.dialog__frame {
+  width: 420px;
+  padding-top: 0;
+  padding-bottom: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.dialog__header {
+}
+
+.dialog__footer {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
