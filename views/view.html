@@ -1,25 +1,21 @@
 {% extends "viewer.html" %}
 {% block frame__inner %}
 <ul class="items">
-  {% for post in posts %}
   <li class="item">
-    {{ controls.item(user=user, post=post) }}
+    {{ controls.item(user=user, post=post, comments=True) }}
     <section class="post">
       <a href="{{url_for('view', post_id=post.key.id())}}">
         <h1 class="post__title">{{post.subject}}</h1>
       </a>
       <article class="post__content">
-        {{post.content[:400]|md|safe}}
+        {{post.content|md|safe}}
       </article>
       <aside class="post__comments">
         comments
       </aside>
     </section>
   </li>
-  {% endfor %}
 </ul>
 {% endblock %}
 {% block footer__inner %}
-<a id="prev-posts" href="{{prev}}#prev-posts" class="button">prev</a>
-<a id="next-posts" href="{{next}}#next-posts" class="button">next</a>
 {% endblock %}

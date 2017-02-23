@@ -39,10 +39,12 @@
     <svg class="icon icon--control icon--heart"><use xlink:href="#icon--heart"></use></svg>
   </a>
   {% endif %}
+  {% if user %}
   {% if comments %}
   <a href="#comments" title="Add comment.">
     <svg class="icon icon--control icon--speech-bubble"><use xlink:href="#icon--speech-bubble"></use></svg>
   </a>
+  {% endif %}
   {% endif %}
 </div>
 {%- endmacro %}

@@ -1,8 +1,4 @@
 {% extends "viewer.html" %}
-{% block header__inner %}
-<h1 class="title">MUBlog</h1>
-{{ controls.auth(user=user) }}
-{% endblock %}
 {% block frame__inner %}
 <form method="post" action="{{form_action}}" class="editor">
   <aside class="editor__controls">

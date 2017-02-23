@@ -5,6 +5,10 @@
   <header class="header">
     <div class="header__inner">
       {% block header__inner %}
+      <a href="/" class="title">
+        <h1>MUBlog</h1>
+      </a>
+      {{ controls.auth(user=user) }}
       {% endblock %}
     </div>
     </div>

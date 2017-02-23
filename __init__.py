@@ -40,7 +40,7 @@ def root(offset=0):
   try:
     posts = BlogPost.gql('ORDER BY created DESC LIMIT 10 OFFSET %s' % offset)
     return render_template('index.html', page=None, user=user,
-                            posts=posts, next=next, prev=prev, md=md)
+                            posts=posts, next=next, prev=prev)
   except Exception as ex:
     print(ex)
     abort(404)
@@ -49,7 +49,16 @@ def root(offset=0):
 
 @app.route("/view/<int:post_id>")
 def view(post_id):
-  pass
+  user = None
+  post = get_post(post_id)
+  if sec.token.get('usr'):
+    user = User()
+    user.fill(username=sec.token.get('usr'))
+  if post:
+    return render_template('view.html', page=None, user=user,
+                            post=post)
+  else:
+    abort(404)
 
 
 @app.route("/edit/", methods=['GET', 'POST'])
