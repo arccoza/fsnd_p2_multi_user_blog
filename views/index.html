@@ -5,22 +5,25 @@
 {% endblock %}
 {% block frame__inner %}
 <ul class="items">
+  {% for post in posts %}
   <li class="item">
-    {{ controls.item(user=user) }}
+    {{ controls.item(user=user, post=post) }}
     <section class="post">
-      <h1 class="post__title">Title</h1>
+      <a href="{{url_for('view', post_id=post.key.id())}}">
+        <h1 class="post__title">{{post.subject}}</h1>
+      </a>
       <article class="post__content">
-        <p>
-          Felis maecenas cum libero ullamcorper a donec ornare euismod aptent aenean dictumst parturient pulvinar etiam scelerisque rhoncus condimentum suspendisse erat adipiscing. Lectus maecenas dictumst gravida parturient primis libero adipiscing vestibulum parturient habitant aliquet fermentum elementum platea odio iaculis id. At hendrerit erat enim consectetur adipiscing sed a condimentum platea in sit massa a eleifend facilisi platea lectus magnis condimentum suspendisse facilisi blandit metus a erat parturient hac vestibulum. Cum non magna faucibus a turpis a sem ac class adipiscing velit a lacinia vestibulum vestibulum sagittis cras iaculis semper.
-        </p>
-        <p>
-          Ac vulputate himenaeos condimentum orci diam quisque vestibulum convallis dis vestibulum adipiscing consectetur elit nostra adipiscing ornare ad justo. Facilisis bibendum ullamcorper volutpat scelerisque taciti lorem sociosqu consectetur erat a cubilia tellus per volutpat id consectetur sem suspendisse sociis massa. Sagittis euismod aliquam a ad tristique ullamcorper a mattis ut in a lectus velit urna lacinia id. Ultricies sed elementum curabitur duis aliquet auctor at consectetur ut magnis penatibus pretium ullamcorper adipiscing a pretium magnis nascetur a id metus parturient. Litora imperdiet amet senectus a convallis habitant a pretium condimentum tortor rhoncus sem congue nostra vivamus ipsum sem a scelerisque vel vestibulum consequat id ut blandit consequat suscipit mattis. Felis at litora nam non luctus ridiculus pretium parturient malesuada condimentum quisque parturient tempus nisl in vestibulum class ipsum est mi a est nunc fusce.
-        </p>
+        {{post.content[:400]|md|safe}}
       </article>
       <aside class="post__comments">
         comments
       </aside>
     </section>
   </li>
+  {% endfor %}
 </ul>
+{% endblock %}
+{% block footer__inner %}
+<a id="prev-posts" href="{{prev}}#prev-posts" class="button">prev</a>
+<a id="next-posts" href="{{next}}#next-posts" class="button">next</a>
 {% endblock %}

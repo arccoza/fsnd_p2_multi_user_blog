@@ -6,6 +6,7 @@ class BaseModel(ndb.Model):
   updated = ndb.DateTimeProperty(auto_now=True)
 
   def empty(self, *args):
+    args = args or self._properties
     for prop in args:
       if not getattr(self, prop):
         return True

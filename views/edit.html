@@ -7,12 +7,14 @@
 <form method="post" action="{{form_action}}" class="editor">
   <aside class="editor__controls">
   {{ controls.confirm(user=user, class="edit-confirm") }}
-  {{ controls.item(user=user, favourite=False, new=True, add=False, rem=False) }}
+  {{ controls.item(user=user, favourite=False, add=True, edit=False, rem=False) }}
   </aside>
   <section class="editor__frame">
     <div class="edit-post">
-      <input type="text" name="subject" value="" placeholder="Enter your post title." class="edit-post__title">
-      <textarea name="content" placeholder="Type your post here, markdown accepted." class="edit-post__content"></textarea>
+      <input type="text" name="subject" value="{{post.subject or ''}}" placeholder="Enter your post title."
+        class="edit-post__title {{ 'input--error' if post and post.empty('subject') else '' }}">
+      <textarea name="content" placeholder="Type your post here, markdown accepted."
+        class="edit-post__content {{ 'input--error' if post and post.empty('content') else '' }}">{{post.content or ''}}</textarea>
     </div>
   </section>
 </form>

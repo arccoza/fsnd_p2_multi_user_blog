@@ -542,7 +542,7 @@ a:hover, a:active {
   color: #FF4136;
 }
 
-input[type=text], textarea, input[type=password], input[type=submit], button {
+input[type=text], textarea, input[type=password], input[type=submit], button, .button {
   padding: 0.5em 0.6em;
   border: none;
   border-radius: 3px;
@@ -580,10 +580,14 @@ input[type=text].input--error:focus, input[type=password].input--error:hover, te
   border: 2px solid #FF4136;
 }
 
-input[type=submit], button {
+input[type=submit], button, .button {
   background-color: #39CCCC;
   color: #FFFFFF;
   cursor: pointer;
+}
+
+a.button {
+  color: #FFFFFF;
 }
 
 input[type=submit].button--red, button.button--red {
@@ -729,7 +733,7 @@ input[type=submit] *, button * {
 }
 
 .item {
-  min-height: 16em;
+  min-height: 12em;
   margin-bottom: 2em;
   display: -webkit-box;
   display: -ms-flexbox;

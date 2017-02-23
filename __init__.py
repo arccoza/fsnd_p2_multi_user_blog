@@ -1,30 +1,81 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, abort
+from google.appengine.ext import ndb
+from google.appengine.ext.db import BadRequestError
 from models.auth import User
+from models.blog import BlogPost
 from utils.security import Security
+import mistune
 
 
 app = Flask(__name__, template_folder="views",
             static_folder='bld', static_url_path='/static')
 app.debug = True
 sec = Security(app, 'shh')
+md = mistune.Markdown()
+app.jinja_env.filters['md'] = md
+
+
+def get_user(token=None, username=None):
+  username = username or token.get('usr') if token else None
+  user = User.query(User.username == username).get()
+  return user
+
+
+def get_post(post_id):
+  try:
+    return BlogPost.get_by_id(post_id)
+  except BadRequestError as ex:
+    return None
 
 
 @app.route("/")
-def root():
+@app.route("/<int:offset>")
+def root(offset=0):
   user = None
+  next = offset + 10
+  prev = offset - 10 if offset >= 10 else 0
   if sec.token.get('usr'):
     user = User()
     user.fill(username=sec.token.get('usr'))
-  return render_template('index.html', page=None, user=user)
+  try:
+    posts = BlogPost.gql('ORDER BY created DESC LIMIT 10 OFFSET %s' % offset)
+    return render_template('index.html', page=None, user=user,
+                            posts=posts, next=next, prev=prev, md=md)
+  except Exception as ex:
+    print(ex)
+    abort(404)
+  # return render_template('index.html', page=None, user=user)
 
 
-@app.route("/edit/")
-def edit():
+@app.route("/view/<int:post_id>")
+def view(post_id):
+  pass
+
+
+@app.route("/edit/", methods=['GET', 'POST'])
+@app.route("/edit/<int:post_id>", methods=['GET', 'POST'])
+def edit(post_id=None):
   user = None
+  post = get_post(post_id)
   if sec.token.get('usr'):
     user = User()
     user.fill(username=sec.token.get('usr'))
-  return render_template('edit.html', page=None, user=user)
+
+  if request.method == 'POST':
+    if request.form.get('cancel'):
+      return redirect(url_for('root'))
+    post = post or BlogPost()
+    post.fill(**request.form.to_dict())
+    if not post.empty('subject', 'content'):
+      try:
+        post.put()
+        return redirect(url_for('edit', post_id=post.key.id()))
+      except Exception as ex:
+        print('post crud error', ex)
+        pass
+      # print('***************', post.key.urlsafe())
+  # print(post)
+  return render_template('edit.html', page=None, user=user, post=post)
 
 
 @app.route("/signup/", methods=['GET', 'POST'])

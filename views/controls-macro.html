@@ -17,16 +17,16 @@
 </div>
 {%- endmacro %}
 
-{% macro item(user=None, post=None, new=True, add=True, rem=True, favourite=True, comments=False, class="item__controls") -%}
+{% macro item(user=None, post=None, add=True, edit=True, rem=True, favourite=True, comments=False, class="item__controls") -%}
 <div class="{{class}}">
   {% if user %}
-  {% if new %}
+  {% if add %}
   <a href="/edit/" title="New post.">
     <svg class="icon icon--control icon--file-add"><use xlink:href="#icon--file-add"></use></svg>
   </a>
   {% endif %}
-  {% if add %}
-  <a href="/edit/{{post.id}}" title="Edit post.">
+  {% if edit %}
+  <a href="/edit/{{post.key.id()}}" title="Edit post.">
     <svg class="icon icon--control icon--file"><use xlink:href="#icon--file"></use></svg>
   </a>
   {% endif %}
