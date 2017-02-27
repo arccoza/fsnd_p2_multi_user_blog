@@ -10,6 +10,9 @@
       <article class="post__content">
         {{post.content|md|safe}}
       </article>
+      <div class="post__meta">
+        <small>author: {{post.key.parent().get().username}}</small>
+      </div>
       <aside class="post__comments">
         comments
       </aside>

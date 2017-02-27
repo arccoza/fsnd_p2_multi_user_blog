@@ -1,25 +1,35 @@
 {% extends "viewer.html" %}
 {% block frame__inner %}
 <ul class="items">
+  {% if user %}
+  <li class="item">
+    {{ controls.item(user=user, post=None, add=True, edit=False, rem=False, favourite=False, comments=False) }}
+  </li>
+  {% endif %}
   {% for post in posts %}
   <li class="item">
-    {{ controls.item(user=user, post=post) }}
+    {{ controls.item(user=user, post=post, add=False, rem=True) }}
     <section class="post">
-      <a href="{{url_for('view', post_id=post.key.id())}}">
+      <a href="{{url_for('view', post_id=post.uid)}}">
         <h1 class="post__title">{{post.subject}}</h1>
       </a>
       <article class="post__content">
         {{post.content[:400]|md|safe}}
       </article>
-      <aside class="post__comments">
-        comments
-      </aside>
+      <div class="post__meta">
+        <small>author: {{post.key.parent().get().username}}</small>
+      </div>
     </section>
   </li>
   {% endfor %}
 </ul>
 {% endblock %}
 {% block footer__inner %}
-<a id="prev-posts" href="{{prev}}#prev-posts" class="button">prev</a>
-<a id="next-posts" href="{{next}}#next-posts" class="button">next</a>
+<small class="footer__copy">
+  fsnd project #2
+</small>
+<div class="index-paginator">
+  <a id="prev-posts" href="{{prev}}#prev-posts" class="button">prev</a>
+  <a id="next-posts" href="{{next}}#next-posts" class="button">next</a>
+</div>
 {% endblock %}

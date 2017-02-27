@@ -4,6 +4,54 @@
 		"selected_items":
 		[
 			[
+				"ent",
+				"entity"
+			],
+			[
+				"get",
+				"get_current"
+			],
+			[
+				"en",
+				"entity"
+			],
+			[
+				"kw",
+				"kw_out"
+			],
+			[
+				"me",
+				"methods"
+			],
+			[
+				"out",
+				"out_name"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"_",
+				"_properties"
+			],
+			[
+				"em",
+				"empty"
+			],
+			[
+				"exc",
+				"except"
+			],
+			[
+				"post",
+				"post_id"
+			],
+			[
 				"sec",
 				"section\tTag"
 			],
@@ -100,10 +148,6 @@
 				"prosemirror-view"
 			],
 			[
-				"get",
-				"getattr"
-			],
-			[
 				"Sec",
 				"Security2"
 			],
@@ -138,10 +182,6 @@
 			[
 				"red",
 				"redirect"
-			],
-			[
-				"en",
-				"encode"
 			],
 			[
 				"sess",
@@ -316,10 +356,6 @@
 				"idx2"
 			],
 			[
-				"_",
-				"_idx1"
-			],
-			[
 				"cons",
 				"constructor"
 			],
@@ -455,7 +491,16 @@
 			"file": "__init__.py",
 			"settings":
 			{
-				"buffer_size": 2988,
+				"buffer_size": 5853,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "requirements.txt",
+			"settings":
+			{
+				"buffer_size": 88,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -483,7 +528,7 @@
 			"file": "src/css/main.css",
 			"settings":
 			{
-				"buffer_size": 4275,
+				"buffer_size": 4367,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -510,7 +555,16 @@
 			"file": "views/index.html",
 			"settings":
 			{
-				"buffer_size": 2144,
+				"buffer_size": 840,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/view.html",
+			"settings":
+			{
+				"buffer_size": 546,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -519,7 +573,16 @@
 			"file": "views/edit.html",
 			"settings":
 			{
-				"buffer_size": 746,
+				"buffer_size": 841,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/delete.html",
+			"settings":
+			{
+				"buffer_size": 867,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -528,7 +591,7 @@
 			"file": "views/controls-macro.html",
 			"settings":
 			{
-				"buffer_size": 2195,
+				"buffer_size": 2287,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -537,7 +600,7 @@
 			"file": "views/viewer.html",
 			"settings":
 			{
-				"buffer_size": 574,
+				"buffer_size": 679,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -546,7 +609,7 @@
 			"file": "views/auth.html",
 			"settings":
 			{
-				"buffer_size": 1236,
+				"buffer_size": 1232,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -597,10 +660,37 @@
 			}
 		},
 		{
+			"file": "models/auth.py",
+			"settings":
+			{
+				"buffer_size": 4136,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "models/__init__.py",
 			"settings":
 			{
-				"buffer_size": 1348,
+				"buffer_size": 2179,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/cuid.py",
+			"settings":
+			{
+				"buffer_size": 4424,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "utils/security.py",
+			"settings":
+			{
+				"buffer_size": 3202,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -700,14 +790,13 @@
 	"expanded_folders":
 	[
 		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog",
-		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/bld/css",
-		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/bld/js",
-		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/models",
-		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/src/css",
-		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/src/js"
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/lib",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/models"
 	],
 	"file_history":
 	[
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/src/css/delete.html",
+		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/requirements.txt",
 		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/src/css/auth.css",
 		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/views/svg-icons.html",
 		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/src/css/svg-icons.css",
@@ -717,7 +806,6 @@
 		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/bld/css/main.css",
 		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/.babelrc",
 		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/models/auth.py",
-		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/requirements.txt",
 		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/requirements.txt",
 		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_rot13/appengine_config.py",
 		"/home/adrien/Projects/education/udacity_fsnd/fsnd_p2_multi_user_blog/fsnd_p2_mublog.sublime-project",
@@ -846,6 +934,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"print",
+			"uid",
 			"article",
 			"post",
 			"box-sizing",
@@ -988,7 +1078,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 21,
 			"sheets":
 			[
 				{
@@ -997,15 +1087,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2988,
+						"buffer_size": 5853,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								483,
-								483
+								1142,
+								1142
 							]
 						],
 						"settings":
@@ -1016,14 +1106,42 @@
 							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 345.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "requirements.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 88,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								88,
+								88
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "build.js",
 					"semi_transient": false,
 					"settings":
@@ -1049,11 +1167,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "gulpfile.js",
 					"semi_transient": false,
 					"settings":
@@ -1080,24 +1198,24 @@
 						"translation.y": 462.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "src/css/main.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4275,
+						"buffer_size": 4367,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								544,
-								544
+								2074,
+								2074
 							]
 						],
 						"settings":
@@ -1107,14 +1225,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 529.0,
+						"translation.y": 1966.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "src/css/svg-icons.css",
 					"semi_transient": false,
 					"settings":
@@ -1140,11 +1258,11 @@
 						"translation.y": 207.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "src/js/main.js",
 					"semi_transient": false,
 					"settings":
@@ -1168,112 +1286,54 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "views/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2144,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								284,
-								284
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "views/edit.html",
+					"file": "views/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 746,
+						"buffer_size": 840,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								659,
-								659
+								350,
+								350
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "views/controls-macro.html",
+					"file": "views/view.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2195,
+						"buffer_size": 546,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								941,
-								941
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 69.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "views/viewer.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 574,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								245,
-								245
+								148,
+								148
 							]
 						],
 						"settings":
@@ -1286,24 +1346,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "views/auth.html",
+					"buffer": 9,
+					"file": "views/edit.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1236,
+						"buffer_size": 841,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								583,
-								583
+								247,
+								247
 							]
 						],
 						"settings":
@@ -1314,11 +1374,129 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "views/delete.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 867,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								463,
+								463
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
 					"buffer": 11,
+					"file": "views/controls-macro.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2287,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1146,
+								1146
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 276.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "views/viewer.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 679,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								220,
+								220
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "views/auth.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1232,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								871,
+								871
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
 					"file": "views/signup.html",
 					"semi_transient": false,
 					"settings":
@@ -1342,11 +1520,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 15,
 					"file": "views/signin.html",
 					"semi_transient": false,
 					"settings":
@@ -1358,8 +1536,8 @@
 						"selection":
 						[
 							[
-								398,
-								398
+								675,
+								675
 							]
 						],
 						"settings":
@@ -1370,11 +1548,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 16,
 					"file": "views/signout.html",
 					"semi_transient": false,
 					"settings":
@@ -1386,8 +1564,8 @@
 						"selection":
 						[
 							[
-								199,
-								199
+								355,
+								355
 							]
 						],
 						"settings":
@@ -1398,11 +1576,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 17,
 					"file": "views/base.html",
 					"semi_transient": false,
 					"settings":
@@ -1428,11 +1606,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 18,
 					"file": "models/blog.py",
 					"semi_transient": false,
 					"settings":
@@ -1444,8 +1622,8 @@
 						"selection":
 						[
 							[
-								61,
-								61
+								60,
+								60
 							]
 						],
 						"settings":
@@ -1456,24 +1634,54 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
-					"file": "models/__init__.py",
+					"buffer": 19,
+					"file": "models/auth.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1348,
+						"buffer_size": 4136,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								269,
-								269
+								1474,
+								1474
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 621.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "models/__init__.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2179,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								730,
+								730
 							]
 						],
 						"settings":
@@ -1486,7 +1694,67 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "lib/cuid.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4424,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1708,
+								1708
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1092.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "utils/security.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3202,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								49,
+								49
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]

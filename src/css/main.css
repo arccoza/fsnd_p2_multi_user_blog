@@ -103,7 +103,7 @@ input[type=submit] *, button * {
   align-content: center;
 }
 
-#auth.main {
+#auth.main, #delete.main {
   align-items: center;
   align-content: center;
   justify-content: space-around;
@@ -164,6 +164,19 @@ input[type=submit] *, button * {
   border-top: 1px solid color(silver tint(60%));
 }
 
+.footer__inner {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footer__copy {
+  flex: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .items {
   padding: 0;
   margin: 0;
@@ -173,8 +186,8 @@ input[type=submit] *, button * {
 }
 
 .item {
-  min-height: 12em;
-  margin-bottom: 2em;
+  /*min-height: 12em;*/
+  /*margin-bottom: 2em;*/
   display: flex;
   flex-flow: row wrap;
   align-content: stretch;
@@ -198,7 +211,19 @@ input[type=submit] *, button * {
 }
 
 .post {
+  margin-bottom: 2em;
   flex: 1;
+}
+
+.post__title {
+    font-size: 2.3em;
+}
+
+.post__meta {
+  padding-left: 1em;
+}
+
+.index-paginator {
 }
 
 .dialog {
@@ -266,6 +291,7 @@ input[type=submit] *, button * {
 }
 
 .edit-post__title {
+  font-size: 2em;
 }
 
 .edit-post__content {
