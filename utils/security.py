@@ -78,7 +78,9 @@ class Session(object):
 class Security(object):
   def __init__(self, app, secret):
     def _before():
-      g._security = g.get('_security') or {'_token': Token(secret), '_session': Session()}
+      g._security = g.get('_security') or {'_token': Token(secret),
+                                            '_session': Session()}
+      g.security = self
       if self.session:
         self.token = self.session
 

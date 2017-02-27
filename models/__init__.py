@@ -1,9 +1,38 @@
 from google.appengine.ext import ndb
+from functools import wraps
+from cuid import cuid
+
+
+class UidProperty(ndb.StringProperty):
+  # def __init__(self, *args, **kwargs):
+  #   super(UidProperty, self).__init__(*args, **kwargs)
+  #   print(cuid)
+
+  def _validate(self, value):
+    if not isinstance(value, (str, unicode)):
+      raise TypeError('expected a string, got %s' % repr(value))
+    return value if value and value[0] == 'c' else cuid()
 
 
 class BaseModel(ndb.Model):
+  uid = UidProperty()
   created = ndb.DateTimeProperty(auto_now_add=True)
   updated = ndb.DateTimeProperty(auto_now=True)
+
+  def __init__(self, *args, **kwargs):
+    super(BaseModel, self).__init__(*args, **kwargs)
+    self.uid = self.uid or cuid()
+    # print(cuid())
+
+  @classmethod
+  def q(cls, query, kw_out):
+    def q_deco(fn):
+      @wraps(fn)
+      def q_handler(**kwargs):
+        kwargs[kw_out] = cls.gql(query % kwargs)
+        return fn(**kwargs)
+      return q_handler
+    return q_deco
 
   def empty(self, *args):
     args = args or self._properties

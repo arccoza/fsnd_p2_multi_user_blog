@@ -3,7 +3,7 @@
 <form method="post" action="{{form_action}}" class="editor">
   <aside class="editor__controls">
   {{ controls.confirm(user=user, class="edit-confirm") }}
-  {{ controls.item(user=user, favourite=False, add=True, edit=False, rem=False) }}
+  {{ controls.item(user=user, post=post, favourite=False, add=True, edit=False, rem=True) }}
   </aside>
   <section class="editor__frame">
     <div class="edit-post">

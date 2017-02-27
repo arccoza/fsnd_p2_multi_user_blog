@@ -25,17 +25,19 @@
     <svg class="icon icon--control icon--file-add"><use xlink:href="#icon--file-add"></use></svg>
   </a>
   {% endif %}
-  {% if edit %}
-  <a href="/edit/{{post.key.id()}}" title="Edit post.">
+  {% if edit and post and (user.key == post.key.parent()) %}
+  <a href="/edit/{{post.uid}}" title="Edit post.">
     <svg class="icon icon--control icon--file"><use xlink:href="#icon--file"></use></svg>
   </a>
   {% endif %}
-  <!-- <a href="" title="Delete post.">
+  {% if rem and post and (user.key == post.key.parent()) %}
+  <a href="/delete/{{post.uid}}" title="Delete post.">
     <svg class="icon icon--control icon--file-subtract"><use xlink:href="#icon--file-subtract"></use></svg>
-  </a> -->
+  </a>
+  {% endif %}
   {% endif %}
   {% if favourite %}
-  <a href="/fav" title="Favourite post.">
+  <a href="/fav/{{post.uid}}" title="Favourite post.">
     <svg class="icon icon--control icon--heart"><use xlink:href="#icon--heart"></use></svg>
   </a>
   {% endif %}
