@@ -13,30 +13,19 @@ app = Flask(__name__, template_folder="views",
 app.debug = True
 sec = Security(app, 'shh')
 md = mistune.Markdown()
-app.jinja_env.filters['md'] = md
+app.jinja_env.filters['md'] = md  # Add markdown filter.
 
 
-def get_user(token=None, username=None):
-  username = username or token.get('usr') if token else None
-  user = User.query(User.username == username).get()
-  return user
-
-
-def get_post(post_id):
-  try:
-    return BlogPost.get_by_id(post_id)
-  except BadRequestError as ex:
-    return None
-
-
-def post_q(query, out_kw):
-  def post_q_deco(fn):
+def is_form_cancelled(redir):
+  def is_form_cancelled_deco(fn):
     @wraps(fn)
-    def post_q_handler(**kwargs):
-      print(query % kwargs)
-      return fn(**{out_kw: BlogPost.gql(query % kwargs)})
-    return post_q_handler
-  return post_q_deco
+    def is_form_cancelled_handler(**kwargs):
+      if request.method == 'POST':
+        if request.form.get('cancel'):
+          return redir()
+      return fn(**kwargs)
+    return is_form_cancelled_handler
+  return is_form_cancelled_deco
 
 
 @app.route("/", defaults={'offset': 0})
@@ -67,6 +56,7 @@ def view(post_id=None, post=None, user=None):
 
 @app.route("/edit/", defaults={'post_id': ''}, methods=['GET', 'POST'])
 @app.route("/edit/<string:post_id>", methods=['GET', 'POST'])
+@is_form_cancelled(lambda: redirect(url_for('root')))
 @User.is_active(lambda: redirect(url_for('root')))
 @BlogPost.q('WHERE ANCESTOR IS {{user.key|safe}} AND uid = \'{{post_id}}\'', 'post')
 @User.is_owner('post', lambda: abort(403))
@@ -83,8 +73,6 @@ def edit(post_id=None, post=None, user=None):
   # post = k.get()
   # print('post key.get:', post.subject)
   if request.method == 'POST':
-    if request.form.get('cancel'):
-      return redirect(url_for('root'))
     post = post or BlogPost(parent=user.key)
     post.fill(**request.form.to_dict())
     if not post.empty('subject', 'content'):
@@ -101,13 +89,13 @@ def edit(post_id=None, post=None, user=None):
 
 @app.route("/delete/<string:post_id>", methods=['GET', 'POST'])
 # @BlogPost.q('WHERE __key__ = KEY(\'BlogPost\', %(post_id)s)', 'post')
+@is_form_cancelled(lambda: redirect(url_for('root')))
+@User.is_active(lambda: redirect(url_for('root')))
 @BlogPost.q('WHERE uid = \'{{post_id}}\'', 'post')
 @User.is_owner('post', lambda: abort(403))
 def delete(post_id=None, post=None, user=None):
   post = post.get() if post else None
   if request.method == 'POST':
-    if request.form.get('cancel'):
-      return redirect(url_for('root'))
     if post:
       post.key.delete()
       return redirect(url_for('root'))
@@ -118,13 +106,12 @@ def delete(post_id=None, post=None, user=None):
 
 @app.route("/signup/", methods=['GET', 'POST'])
 # @sec.allow(lambda t: not t.get('usr'), lambda: redirect(url_for('root')))
+@is_form_cancelled(lambda: redirect(url_for('root')))
 @User.is_inactive(lambda: redirect(url_for('root')))
 def signup():
   user = None
   pass_verified = None
   if request.method == 'POST':
-    if request.form.get('cancel'):
-      return redirect(url_for('root'))
     try:
       user = User()
       user.fill(**request.form.to_dict())
@@ -143,14 +130,13 @@ def signup():
 
 @app.route("/signin/", methods=['GET', 'POST'])
 # @sec.allow(lambda t: not t.get('usr'), lambda: redirect(url_for('root')))
+@is_form_cancelled(lambda: redirect(url_for('root')))
 @User.is_inactive(lambda: redirect(url_for('root')))
 def signin():
   user = None
   user_verified = False
   pass_verified = False
   if request.method == 'POST':
-    if request.form.get('cancel'):
-      return redirect(url_for('root'))
     try:
       user = User.query(User.username == request.form.get('username', '')).get()
     except Exception as ex:
