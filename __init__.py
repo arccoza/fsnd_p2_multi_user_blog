@@ -41,7 +41,7 @@ def post_q(query, out_kw):
 
 @app.route("/", defaults={'offset': 0})
 @app.route("/<int:offset>")
-@BlogPost.q('ORDER BY created DESC LIMIT 10 OFFSET %(offset)s', 'posts')
+@BlogPost.q('ORDER BY created DESC LIMIT 10 OFFSET {{offset}}', 'posts')
 @User.is_available()
 def root(offset=0, posts=None, user=None):
   user = user or None
@@ -53,7 +53,7 @@ def root(offset=0, posts=None, user=None):
 
 
 @app.route("/view/<string:post_id>")
-@BlogPost.q('WHERE uid = \'%(post_id)s\'', 'post')
+@BlogPost.q('WHERE uid = \'{{post_id}}\'', 'post')
 @User.is_available()
 def view(post_id=None, post=None, user=None):
   user = user or None
@@ -67,13 +67,21 @@ def view(post_id=None, post=None, user=None):
 
 @app.route("/edit/", defaults={'post_id': ''}, methods=['GET', 'POST'])
 @app.route("/edit/<string:post_id>", methods=['GET', 'POST'])
-@BlogPost.q('WHERE uid = \'%(post_id)s\'', 'post')
+@User.is_available()
+@BlogPost.q('WHERE ANCESTOR IS {{user.key|safe}} AND uid = \'{{post_id}}\'', 'post')
 @User.is_owner('post', lambda: abort(403))
 def edit(post_id=None, post=None, user=None):
   user = user or None
+  print('-------------------------------------------')
   print('post query:', post)
   post = post.get() if post else None
-  print('post get:', post)
+  # print('post get:', post.subject)
+  # print('post key:', post.key)
+  # BlogPost.gql('WHERE ANCESTOR IS ' + str(user.key) + ' and uid = \'' + post_id + '\'').get()
+  # k = ndb.Key(BlogPost, 5770237022568448, parent=user.key)
+  # print('key:', k)
+  # post = k.get()
+  # print('post key.get:', post.subject)
   if request.method == 'POST':
     if request.form.get('cancel'):
       return redirect(url_for('root'))
@@ -81,8 +89,9 @@ def edit(post_id=None, post=None, user=None):
     post.fill(**request.form.to_dict())
     if not post.empty('subject', 'content'):
       try:
-        post.put()
-        print('post save:', post.uid)
+        key = post.put()
+        # post = key.get()
+        # print('post save:', post.subject)
         return redirect(url_for('edit', post_id=post.uid))
       except Exception as ex:
         print('post crud error', ex)
@@ -92,7 +101,7 @@ def edit(post_id=None, post=None, user=None):
 
 @app.route("/delete/<string:post_id>", methods=['GET', 'POST'])
 # @BlogPost.q('WHERE __key__ = KEY(\'BlogPost\', %(post_id)s)', 'post')
-@BlogPost.q('WHERE uid = \'%(post_id)s\'', 'post')
+@BlogPost.q('WHERE uid = \'{{post_id}}\'', 'post')
 @User.is_owner('post', lambda: abort(403))
 def delete(post_id=None, post=None, user=None):
   post = post.get() if post else None

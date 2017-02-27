@@ -1,3 +1,4 @@
+from flask import render_template_string
 from google.appengine.ext import ndb
 from functools import wraps
 from cuid import cuid
@@ -29,7 +30,9 @@ class BaseModel(ndb.Model):
     def q_deco(fn):
       @wraps(fn)
       def q_handler(**kwargs):
-        kwargs[kw_out] = cls.gql(query % kwargs)
+        # kwargs[kw_out] = cls.gql(query % kwargs)
+        print(render_template_string(query, **kwargs))
+        kwargs[kw_out] = cls.gql(render_template_string(query, **kwargs))
         return fn(**kwargs)
       return q_handler
     return q_deco
