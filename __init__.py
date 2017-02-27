@@ -67,7 +67,7 @@ def view(post_id=None, post=None, user=None):
 
 @app.route("/edit/", defaults={'post_id': ''}, methods=['GET', 'POST'])
 @app.route("/edit/<string:post_id>", methods=['GET', 'POST'])
-@User.is_available()
+@User.is_active(lambda: redirect(url_for('root')))
 @BlogPost.q('WHERE ANCESTOR IS {{user.key|safe}} AND uid = \'{{post_id}}\'', 'post')
 @User.is_owner('post', lambda: abort(403))
 def edit(post_id=None, post=None, user=None):
