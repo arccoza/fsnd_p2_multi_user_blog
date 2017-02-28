@@ -21,10 +21,17 @@ class BaseModel(ndb.Model):
   updated = ndb.DateTimeProperty(auto_now=True)
 
   def __init__(self, *args, **kwargs):
+    uid = cuid()
+    if kwargs.get('key'):
+      flat = list(kwargs['key'].flat())
+      flat[-1] = uid
+      ndb.Key(*flat)
+      print('flat: ', flat)
+    else:
+      kwargs['id'] = uid
     super(BaseModel, self).__init__(*args, **kwargs)
-    self.uid = self.uid or cuid()
-    self.key = ndb.Key(self._get_kind(), self.uid)
-    # print(cuid())
+    self.uid = self.uid or uid
+    # self.key = ndb.Key(self._get_kind(), self.uid)
 
   @classmethod
   def q(cls, query, kw_out):
