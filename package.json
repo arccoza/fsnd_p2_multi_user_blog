@@ -36,6 +36,7 @@
     "prosemirror-schema-basic": "^0.17.0",
     "prosemirror-state": "^0.17.1",
     "prosemirror-view": "^0.17.7",
-    "rollup-plugin-json": "^2.1.0"
+    "rollup-plugin-json": "^2.1.0",
+    "unfetch": "^2.1.1"
   }
 }

@@ -477,35 +477,35 @@ Single-colored icons can be modified like so:
 }
 ========================================== */
 
-.icon--control {
+.button-icon .icon {
   -webkit-transition: -webkit-transform 0.2s linear;
   transition: -webkit-transform 0.2s linear;
   transition: transform 0.2s linear;
   transition: transform 0.2s linear, -webkit-transform 0.2s linear;
 }
 
-.icon--control:hover {
+.button-icon:hover .icon {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
 }
 
-.icon--control.icon--file-add:hover {
+.button-icon .icon--file-add:hover {
   color: #2ECC40;
 }
 
-.icon--control.icon--file:hover {
+.button-icon .icon--file:hover {
   color: #0074D9;
 }
 
-.icon--control.icon--file-subtract:hover {
+.button-icon .icon--file-subtract:hover {
   color: #FF4136;
 }
 
-.icon--control.icon--heart:hover, .icon--heart--active {
+.button-icon .icon--heart:hover, .button-icon--active .icon {
   color: #F012BE;
 }
 
-.icon--control.icon--speech-bubble:hover {
+.button-icon .icon--speech-bubble:hover {
   color: #0074D9;
 }
 

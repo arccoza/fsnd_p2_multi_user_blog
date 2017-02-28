@@ -32,7 +32,16 @@ function closest$1 (element, selector) {
 
 var closest_1 = closest$1;
 
-var closest = closest_1;
+
+
+var closest$2 = Object.freeze({
+	default: closest_1,
+	__moduleExports: closest_1
+});
+
+var require$$0 = ( closest$2 && closest$2['default'] ) || closest$2;
+
+var closest = require$$0;
 
 /**
  * Delegates event to a selector.
@@ -84,13 +93,14 @@ var delegate_1 = delegate;
 // import {keymap} from 'prosemirror-keymap';
 // import {schema, defaultMarkdownParser, defaultMarkdownSerializer} from 'prosemirror-markdown';
 // // var {schema, defaultMarkdownParser, defaultMarkdownSerializer} = require('prosemirror-markdown');
+// import 'unfetch/polyfill';
 var print = console.log.bind(console);
-var ready = delegate_1.bind(document, document, 'DOMContentLoaded');
-// var ready = document.addEventListener.bind(document, 'DOMContentLoaded');
+// var ready = delegate.bind(document, document, 'DOMContentLoaded');
+var ready = document.addEventListener.bind(document, 'DOMContentLoaded');
 // var click = document.addEventListener.bind(document, 'click');
 
 
-ready(function () {
+ready(function (ev) {
   //   var view = new EditorView(document.body, {
   //     state: EditorState.create({
   //       doc: defaultMarkdownParser.parse('content'),
@@ -106,9 +116,22 @@ ready(function () {
 
   //   print(view);
 
-  delegate_1(document.body, '.faves', 'click', function (ev) {
-    print(ev);
+  delegate_1(document, '.faves', 'click', function (ev) {
     ev.preventDefault();
+
+    print(ev);
+    fetch(ev.delegateTarget.attributes.href.value, {
+      method: 'POST',
+      credentials: 'include'
+    }).then(function (r) {
+      print(r);
+      alert(document.cookie.replace(/(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
+      ev.delegateTarget.classList.toggle('button-icon--active');
+    }).catch(function (err) {
+      print(err);
+    });
+
+    return false;
   });
 });
 

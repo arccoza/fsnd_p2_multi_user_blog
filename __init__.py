@@ -55,12 +55,14 @@ def view(post_id=None, post=None, user=None):
 
 
 @app.route("/fave/<string:post_id>", methods=['POST'])
-@User.is_active(lambda: redirect(url_for('root')))
+@User.is_active(lambda: abort(403))
 @BlogPost.q('WHERE uid = \'{{post_id}}\'', 'post')
 def fave(post_id=None, post=None, user=None):
   user = user or None
   post = post.get() if post else None
+  print('post')
   if post:
+    print(post.faved)
     return ''
   else:
     abort(404)
