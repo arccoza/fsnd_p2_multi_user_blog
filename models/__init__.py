@@ -23,6 +23,7 @@ class BaseModel(ndb.Model):
   def __init__(self, *args, **kwargs):
     super(BaseModel, self).__init__(*args, **kwargs)
     self.uid = self.uid or cuid()
+    self.key = ndb.Key(self._get_kind(), self.uid)
     # print(cuid())
 
   @classmethod
@@ -31,7 +32,6 @@ class BaseModel(ndb.Model):
       @wraps(fn)
       def q_handler(**kwargs):
         # kwargs[kw_out] = cls.gql(query % kwargs)
-        print(render_template_string(query, **kwargs))
         kwargs[kw_out] = cls.gql(render_template_string(query, **kwargs))
         return fn(**kwargs)
       return q_handler

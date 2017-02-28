@@ -118,7 +118,7 @@ def signup():
       pass_verified = request.form.get('verify') == request.form.get('password')
       if user.valid() and user.unique and pass_verified:
         user.put()
-        sec.token = {'usr': user.username}
+        sec.token = {'usr': user.username, 'uid': user.uid}
         return redirect(url_for('root'))
     except Exception as ex:
       print('bad user')
@@ -144,7 +144,7 @@ def signin():
     user_verified = True if user else False
     if (user and user.password and
       User.password.verify(request.form.get('password'), user.password)):
-      sec.token = {'usr': user.username}
+      sec.token = {'usr': user.username, 'uid': user.uid}
       pass_verified = True
       return redirect(url_for('root'))
     else:
@@ -158,11 +158,10 @@ def signin():
 
 @app.route("/signout/", methods=['GET', 'POST'])
 # @sec.allow(lambda t: t.get('usr'), lambda: redirect(url_for('signin')))
+@is_form_cancelled(lambda: redirect(url_for('root')))
 @User.is_active(lambda: redirect(url_for('signin')))
 def signout(user=None):
   if request.method == 'POST':
-    if request.form.get('cancel'):
-      return redirect(url_for('root'))
     sec.token = {}
     return redirect(url_for('root'))
   return render_template('signout.html',

@@ -66,7 +66,9 @@ class User(BaseModel):
   @classmethod
   def get_current(cls):
     if g.security and g.security.token.get('usr'):
-      user = cls.query(cls.username == g.security.token.get('usr')).get()
+      # user = cls.query(cls.username == g.security.token.get('usr')).get()
+      user = ndb.Key(cls, g.security.token.get('uid')).get()
+      print('avail:', user)
       if not user:
         g.security.token = {}
       return user
