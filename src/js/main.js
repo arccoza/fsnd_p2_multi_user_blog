@@ -5,11 +5,15 @@
 // import {keymap} from 'prosemirror-keymap';
 // import {schema, defaultMarkdownParser, defaultMarkdownSerializer} from 'prosemirror-markdown';
 // // var {schema, defaultMarkdownParser, defaultMarkdownSerializer} = require('prosemirror-markdown');
-// var print = console.log.bind(console);
-// var ready = document.addEventListener.bind(document, "DOMContentLoaded");
+import delegate from 'delegate';
+var print = console.log.bind(console);
+var ready = delegate.bind(document, document, 'DOMContentLoaded');
+// var ready = document.addEventListener.bind(document, 'DOMContentLoaded');
+// var click = document.addEventListener.bind(document, 'click');
 
 
-// ready(() => {
+
+ready(() => {
 //   var view = new EditorView(document.body, {
 //     state: EditorState.create({
 //       doc: defaultMarkdownParser.parse('content'),
@@ -24,4 +28,9 @@
 //   });
 
 //   print(view);
-// });
+  
+  delegate(document.body, '.faves', 'click', ev => {
+    print(ev);
+    ev.preventDefault();
+  });
+});

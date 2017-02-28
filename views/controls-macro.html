@@ -36,8 +36,8 @@
   </a>
   {% endif %}
   {% endif %}
-  {% if favourite %}
-  <a href="/fav/{{post.uid}}" title="Favourite post.">
+  {% if favourite and user %}
+  <a href="/fave/{{post.uid}}" title="Favourite post." class="faves">
     <svg class="icon icon--control icon--heart"><use xlink:href="#icon--heart"></use></svg>
   </a>
   {% endif %}

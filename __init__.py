@@ -54,6 +54,18 @@ def view(post_id=None, post=None, user=None):
     abort(404)
 
 
+@app.route("/fave/<string:post_id>", methods=['POST'])
+@User.is_active(lambda: redirect(url_for('root')))
+@BlogPost.q('WHERE uid = \'{{post_id}}\'', 'post')
+def fave(post_id=None, post=None, user=None):
+  user = user or None
+  post = post.get() if post else None
+  if post:
+    return ''
+  else:
+    abort(404)
+
+
 @app.route("/edit/", defaults={'post_id': ''}, methods=['GET', 'POST'])
 @app.route("/edit/<string:post_id>", methods=['GET', 'POST'])
 @is_form_cancelled(lambda: redirect(url_for('root')))
