@@ -37,7 +37,8 @@
   {% endif %}
   {% endif %}
   {% if favourite and user %}
-  <a href="/fave/{{post.uid}}" title="Favourite post." class="faves button-icon">
+  <a href="/fave/{{post.uid}}" title="Favourite post."
+    class="faves button-icon {{'button-icon--active' if user.uid in post.faved else ''}}">
     <svg class="icon icon--control icon--heart"><use xlink:href="#icon--heart"></use></svg>
   </a>
   {% endif %}
