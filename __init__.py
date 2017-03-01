@@ -121,7 +121,8 @@ def fave(post_id=None, post=None, user=None):
 @app.route("/edit/<string:post_id>", methods=['GET', 'POST'])
 @is_form_cancelled(lambda: redirect(url_for('root')))
 @User.is_active(lambda: redirect(url_for('root')))
-@BlogPost.q('WHERE ANCESTOR IS {{user.key|safe}} AND uid = \'{{post_id}}\'', 'post')
+@BlogPost.q(
+  'WHERE ANCESTOR IS {{user.key|safe}} AND uid = \'{{post_id}}\'', 'post')
 @User.is_owner('post', lambda: abort(403))
 def edit(post_id=None, post=None, user=None):
   '''
@@ -175,7 +176,8 @@ def delete(post_id=None, post=None, user=None):
 
 @app.route("/signup/", methods=['GET', 'POST'])
 # @sec.allow(lambda t: not t.get('usr'), lambda: redirect(url_for('root')))
-@is_form_cancelled(lambda: redirect(url_for('root')))
+@is_form_cancelled(
+  lambda: redirect(request.args.get('next', None) or url_for('root')))
 @User.is_inactive(lambda: redirect(url_for('root')))
 def signup():
   '''
@@ -204,7 +206,8 @@ def signup():
 
 @app.route("/signin/", methods=['GET', 'POST'])
 # @sec.allow(lambda t: not t.get('usr'), lambda: redirect(url_for('root')))
-@is_form_cancelled(lambda: redirect(url_for('root')))
+@is_form_cancelled(
+  lambda: redirect(request.args.get('next', None) or url_for('root')))
 @User.is_inactive(lambda: redirect(url_for('root')))
 def signin():
   '''
@@ -237,7 +240,8 @@ def signin():
 
 @app.route("/signout/", methods=['GET', 'POST'])
 # @sec.allow(lambda t: t.get('usr'), lambda: redirect(url_for('signin')))
-@is_form_cancelled(lambda: redirect(url_for('root')))
+@is_form_cancelled(
+  lambda: redirect(request.args.get('next', None) or url_for('root')))
 @User.is_active(lambda: redirect(url_for('signin')))
 def signout(user=None):
   '''
