@@ -13,9 +13,24 @@
       <div class="post__meta">
         <small>author: {{post.key.parent().get().username}}</small>
       </div>
-      <aside class="post__comments">
-        comments
-      </aside>
+      <footer class="post__footer">
+        {% if user %}
+        {% call widgets.dialog(title='Add comment.', class='comment-form', ok='comment', cancel='cancel', action='/comment/' + post.uid) %}
+          <textarea name="content" placeholder="Type your comment here." class="comment-form__content"></textarea>
+        {% endcall %}
+        {% else %}
+        <h2>You must be signed-in to comment.</h2>
+        {{ controls.auth(user=user) }}
+        {% endif %}
+        <ul id="comments" class="post__comments">
+          {% for comment in comments %}
+          <li class="post__comment">
+            <b>{{comment.author.get().username if comment.author else ''}} said</b>
+            <div>{{comment.content}}</div>
+          </li>
+          {% endfor %}
+        </ul>
+      </footer>
     </section>
   </li>
 </ul>

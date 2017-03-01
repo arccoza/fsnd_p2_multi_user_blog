@@ -758,6 +758,7 @@ input[type=submit] *, button * {
 .item {
   /*min-height: 12em;*/
   /*margin-bottom: 2em;*/
+  list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -799,6 +800,13 @@ input[type=submit] *, button * {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
 }
 
 .post__title {
@@ -807,12 +815,66 @@ input[type=submit] *, button * {
 
 .post__meta {
   padding-left: 1em;
+  margin-bottom: 2em;
+}
+
+.post__footer {
+  width: 100%;
+  margin-bottom: 2em;
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post__comments {
+  list-style: none;
+  width: 80%;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.post__comment {
+  padding: 0;
+  margin: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+
+.post__comment > b {
+  margin-bottom: 0.5em;
+}
+
+.post__comment > div {
+  padding-left: 1em;
 }
 
 .index-paginator {
 }
 
-.dialog {
+.dialog, .comment-form {
   border: 1px solid rgb(241, 241, 241);
   width: 420px;
   display: -webkit-box;
@@ -824,11 +886,12 @@ input[type=submit] *, button * {
           flex-flow: column nowrap;
 }
 
-.dialog__title {
+.dialog__title, .comment-form__title {
   margin: 0;
 }
 
-.dialog__header, .dialog__frame, .dialog__footer {
+.dialog__header, .dialog__frame, .dialog__footer,
+.comment-form__header, .comment-form__frame, .comment-form__footer {
   width: 100%;
   padding: 1em;
   display: -webkit-box;
@@ -840,7 +903,7 @@ input[type=submit] *, button * {
           flex-flow: row wrap;
 }
 
-.dialog__frame {
+.dialog__frame, .comment-form__frame {
   width: 420px;
   padding-top: 0;
   padding-bottom: 0;
@@ -852,7 +915,7 @@ input[type=submit] *, button * {
 .dialog__header {
 }
 
-.dialog__footer {
+.dialog__footer, .comment-form__footer {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
@@ -930,3 +993,11 @@ input[type=submit] *, button * {
           flex: 1;
 }
 
+.comment-form {
+  margin-bottom: 2em;
+}
+
+.comment-form__content {
+  width: 100%;
+  min-height: 8em;
+}

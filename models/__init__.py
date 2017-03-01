@@ -39,6 +39,7 @@ class BaseModel(ndb.Model):
       @wraps(fn)
       def q_handler(**kwargs):
         # kwargs[kw_out] = cls.gql(query % kwargs)
+        print(kwargs)
         kwargs[kw_out] = cls.gql(render_template_string(query, **kwargs))
         return fn(**kwargs)
       return q_handler

@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, redirect, url_for, abort
 from google.appengine.ext import ndb
 from google.appengine.ext.db import BadRequestError
 from models.auth import User
-from models.blog import BlogPost
+from models.blog import BlogPost, BlogComment
 from utils.security import Security
 from functools import wraps
 import mistune
@@ -43,13 +43,15 @@ def root(offset=0, posts=None, user=None):
 
 @app.route("/view/<string:post_id>")
 @BlogPost.q('WHERE uid = \'{{post_id}}\'', 'post')
+@BlogComment.q('WHERE ANCESTOR IS {{post.get().key|safe}}', 'comments')
 @User.is_available()
-def view(post_id=None, post=None, user=None):
+def view(post_id=None, post=None, comments=None, user=None):
   user = user or None
   post = post.get() if post else None
+  comments = comments or None
   if post:
     return render_template('view.html', page=None, user=user,
-                            post=post)
+                            post=post, comments=comments)
   else:
     abort(404)
 
@@ -72,6 +74,22 @@ def fave(post_id=None, post=None, user=None):
     post.faved = faved
     post.put()
     return res
+  else:
+    return abort(404)
+
+
+@app.route("/comment/<string:post_id>", methods=['POST'])
+@User.is_active(lambda: abort(403))
+@BlogPost.q('WHERE uid = \'{{post_id}}\'', 'post')
+def comment(post_id=None, post=None, user=None):
+  user = user or None
+  post = post.get() if post else None
+  if post:
+    comment = BlogComment(parent=post.key)
+    comment.fill(content=request.form.get('content'), author=user.key)
+    comment.put()
+    print(comment)
+    return redirect(request.referrer + '#comments')
   else:
     return abort(404)
 

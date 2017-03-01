@@ -1,0 +1,23 @@
+{% macro dialog(title=None, content=None, ok='ok', cancel='cancel', class='dialog', action=None) -%}
+<form class="{{class}}" method="post" action={{action or ''}}>
+  <header class="{{class}}__header">
+    <h2 class="{{class}}__title">
+      {{title or ''}}
+    </h2>
+  </header>
+  <div class="{{class}}__frame">
+    {{content or ''}}
+    {{caller()}}
+  </div>
+  <footer class="{{class}}__footer">
+    <button name="{{ok}}" value="{{ok}}">
+      <span>{{ok}}</span>
+      <svg class="button__icon--end icon icon--check"><use xlink:href="#icon--check"></use></svg>
+    </button>
+    <button name="{{cancel}}" value="{{cancel}}" class="button--red">
+      <span>{{cancel}}</span>
+      <svg class="button__icon--end icon icon--cross"><use xlink:href="#icon--cross"></use></svg>
+    </button>
+  </footer>
+</form>
+{%- endmacro %}

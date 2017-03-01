@@ -188,6 +188,7 @@ input[type=submit] *, button * {
 .item {
   /*min-height: 12em;*/
   /*margin-bottom: 2em;*/
+  list-style: none;
   display: flex;
   flex-flow: row wrap;
   align-content: stretch;
@@ -213,6 +214,8 @@ input[type=submit] *, button * {
 .post {
   margin-bottom: 2em;
   flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .post__title {
@@ -221,30 +224,66 @@ input[type=submit] *, button * {
 
 .post__meta {
   padding-left: 1em;
+  margin-bottom: 2em;
+}
+
+.post__footer {
+  width: 100%;
+  margin-bottom: 2em;
+  align-self: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  align-items: center;
+}
+
+.post__comments {
+  list-style: none;
+  width: 80%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.post__comment {
+  padding: 0;
+  margin: 1em;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.post__comment > b {
+  margin-bottom: 0.5em;
+}
+
+.post__comment > div {
+  padding-left: 1em;
 }
 
 .index-paginator {
 }
 
-.dialog {
+.dialog, .comment-form {
   border: 1px solid color(silver tint(60%));
   width: 420px;
   display: flex;
   flex-flow: column nowrap;
 }
 
-.dialog__title {
+.dialog__title, .comment-form__title {
   margin: 0;
 }
 
-.dialog__header, .dialog__frame, .dialog__footer {
+.dialog__header, .dialog__frame, .dialog__footer,
+.comment-form__header, .comment-form__frame, .comment-form__footer {
   width: 100%;
   padding: 1em;
   display: flex;
   flex-flow: row wrap;
 }
 
-.dialog__frame {
+.dialog__frame, .comment-form__frame {
   width: 420px;
   padding-top: 0;
   padding-bottom: 0;
@@ -254,7 +293,7 @@ input[type=submit] *, button * {
 .dialog__header {
 }
 
-.dialog__footer {
+.dialog__footer, .comment-form__footer {
   justify-content: flex-end;
 }
 
@@ -299,3 +338,11 @@ input[type=submit] *, button * {
   flex: 1;
 }
 
+.comment-form {
+  margin-bottom: 2em;
+}
+
+.comment-form__content {
+  width: 100%;
+  min-height: 8em;
+}
