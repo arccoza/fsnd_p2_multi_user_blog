@@ -123,10 +123,12 @@ ready(function (ev) {
     fetch(ev.delegateTarget.attributes.href.value, {
       method: 'POST',
       credentials: 'include'
-    }).then(function (r) {
-      print(r);
-      alert(document.cookie.replace(/(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
-      ev.delegateTarget.classList.toggle('button-icon--active');
+    }).then(function (res) {
+      return res.text();
+      // alert(document.cookie.replace(/(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
+    }).then(function (res) {
+      print(res);
+      ev.delegateTarget.classList[res]('button-icon--active');
     }).catch(function (err) {
       print(err);
     });

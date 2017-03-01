@@ -60,12 +60,20 @@ def view(post_id=None, post=None, user=None):
 def fave(post_id=None, post=None, user=None):
   user = user or None
   post = post.get() if post else None
-  print('post')
+  res = None
   if post:
-    print(post.faved)
-    return ''
+    faved = post.faved
+    try:
+      faved.remove(user.uid)
+      res = 'remove'
+    except ValueError as ex:
+      faved.append(user.uid)
+      res = 'add'
+    post.faved = faved
+    post.put()
+    return res
   else:
-    abort(404)
+    return abort(404)
 
 
 @app.route("/edit/", defaults={'post_id': ''}, methods=['GET', 'POST'])

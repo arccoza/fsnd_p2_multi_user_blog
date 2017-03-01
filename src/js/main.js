@@ -38,10 +38,13 @@ ready(ev => {
       method: 'POST',
       credentials: 'include'
     })
-    .then( r => {
-      print(r);
-      alert(document.cookie.replace(/(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
-      ev.delegateTarget.classList.toggle('button-icon--active')
+    .then(res => {
+      return res.text();
+      // alert(document.cookie.replace(/(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
+    })
+    .then(res => {
+      print(res);
+      ev.delegateTarget.classList[res]('button-icon--active');
     })
     .catch(err => {
       print(err);
