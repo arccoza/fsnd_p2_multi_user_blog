@@ -2,15 +2,15 @@
 <div class="auth-controls">
   <small>{{user.username}}</small>
   {% if user %}
-  <a href="/signout" title="Signout." class="button-icon">
+  <a href="{{url_for('signout', next=request.path)}}" title="Signout." class="button-icon">
     <svg class="icon icon--control icon--arrow-up"><use xlink:href="#icon--arrow-up"></use></svg>
   </a>
   {% endif %}
   {% if not user %}
-  <a href="/signin" title="Signin." class="button-icon">
+  <a href="{{url_for('signin', next=request.path)}}" title="Signin." class="button-icon">
     <svg class="icon icon--control icon--arrow-down"><use xlink:href="#icon--arrow-down"></use></svg>
   </a>
-  <a href="/signup" title="Signup." class="button-icon">
+  <a href="{{url_for('signup', next=request.path)}}" title="Signup." class="button-icon">
     <svg class="icon icon--control icon--head"><use xlink:href="#icon--head"></use></svg>
   </a>
   {% endif %}
