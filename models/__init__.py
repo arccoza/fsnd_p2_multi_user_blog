@@ -16,6 +16,10 @@ class UidProperty(ndb.StringProperty):
 
 
 class BaseModel(ndb.Model):
+  '''
+  The base model class for all models in this app.
+  This model generates unique keys independent of GAE datastore.
+  '''
   uid = UidProperty()
   created = ndb.DateTimeProperty(auto_now_add=True)
   updated = ndb.DateTimeProperty(auto_now=True)
@@ -35,6 +39,9 @@ class BaseModel(ndb.Model):
 
   @classmethod
   def q(cls, query, kw_out):
+    '''
+    A query decorator that passes the query cursor onto the wrapped function.
+    '''
     def q_deco(fn):
       @wraps(fn)
       def q_handler(**kwargs):
@@ -46,6 +53,10 @@ class BaseModel(ndb.Model):
     return q_deco
 
   def empty(self, *args):
+    '''
+    Check if the provided property names have an empty value.
+    Fails on the first empty value.
+    '''
     args = args or self._properties
     for prop in args:
       if not getattr(self, prop):
@@ -68,6 +79,10 @@ class BaseModel(ndb.Model):
       self._unique = v
 
   def valid(self, prop=None):
+    '''
+    Check if the model is valid,
+    or provide a property name and check if it is valid.
+    '''
     isValid = False
     props = {prop: self._properties.get(prop)} if prop else self._properties
     for k, v in props.iteritems():
@@ -87,6 +102,10 @@ class BaseModel(ndb.Model):
     return isValid
 
   def fill(self, **kwargs):
+    '''
+    Fill the model with the keyword values that match prop names.
+    Does not trigger validation.
+    '''
     # print('populate:')
     # for k, v in kwargs.iteritems():
     for k in self._properties:

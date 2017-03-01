@@ -127,10 +127,10 @@ ready(function (ev) {
       return res.text();
       // alert(document.cookie.replace(/(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
     }).then(function (res) {
-      print(res);
+      // print(res);
       ev.delegateTarget.classList[res]('button-icon--active');
     }).catch(function (err) {
-      print(err);
+      // print(err);
     });
 
     return false;

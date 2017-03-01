@@ -12,6 +12,9 @@ conf = Conf('sssshhhhhhhhhhhh!')
 
 
 def is_not_empty(prop, v):
+  '''
+  Check for empty values.
+  '''
   if v:
     return v
   else:
@@ -24,6 +27,9 @@ _re_is_email = re.compile('^[\S]+@[\S]+.[\S]+$')
 
 
 def is_username(prop, v):
+  '''
+  Check for values that pass username requirements.
+  '''
   if v and _re_is_username.match(v):
     return v
   else:
@@ -31,6 +37,9 @@ def is_username(prop, v):
 
 
 def is_password(prop, v):
+  '''
+  Check for values that pass password requirements.
+  '''
   # print('is_password: ', v, _re_is_password.match(v))
   if v and _re_is_password.match(v):
     return v
@@ -39,6 +48,9 @@ def is_password(prop, v):
 
 
 def is_email(prop, v):
+  '''
+  Check for values that pass email requirements.
+  '''
   # print('is_email: ', v, _re_is_email.match(v))
   if v and _re_is_email.match(v):
     return v
@@ -47,6 +59,9 @@ def is_email(prop, v):
 
 
 class PasswordProperty(ndb.StringProperty):
+  '''
+  A custom password property with validation.
+  '''
   def _validate(self, value):
     if not isinstance(value, (str, unicode)):
       raise TypeError('expected a string, got %s' % repr(value))
@@ -59,12 +74,19 @@ class PasswordProperty(ndb.StringProperty):
 
 
 class User(BaseModel):
+  '''
+  User model for the app.
+  Extends BaseModel.
+  '''
   username = ndb.StringProperty(required=True, validator=is_username)
   password = PasswordProperty(required=True)
   email = ndb.StringProperty(required=True, validator=is_email)
 
   @classmethod
   def get_current(cls):
+    '''
+    Get the current user from cookies/tokens if possible.
+    '''
     if g.security and g.security.token.get('usr'):
       # user = cls.query(cls.username == g.security.token.get('usr')).get()
       user = ndb.Key(cls, g.security.token.get('uid')).get()
@@ -75,6 +97,9 @@ class User(BaseModel):
 
   @classmethod
   def is_available(cls):
+    '''
+    Decorator to provide user to wrapped function.
+    '''
     def is_available_deco(fn):
       @wraps(fn)
       def is_available_handler(**kwargs):
@@ -86,6 +111,10 @@ class User(BaseModel):
 
   @classmethod
   def is_active(cls, fail):
+    '''
+    Decorator to provide user to wrapped function.
+    If not available calls fail handler.
+    '''
     def is_active_deco(fn):
       @wraps(fn)
       def is_active_handler(**kwargs):
@@ -99,6 +128,10 @@ class User(BaseModel):
 
   @classmethod
   def is_inactive(cls, fail):
+    '''
+    Decorator to ensure no user is signed-in.
+    If a user is available, calls fail handler.
+    '''
     def is_active_deco(fn):
       @wraps(fn)
       def is_active_handler(**kwargs):
@@ -110,6 +143,11 @@ class User(BaseModel):
 
   @classmethod
   def is_owner(cls, what, fail):
+    '''
+    Decorator to provide user to wrapped function.
+    Checks if the user owns the object in args identified by `what` arg.
+    If not available or owner calls fail handler.
+    '''
     def is_owner_deco(fn):
       @wraps(fn)
       def is_owner_handler(**kwargs):
@@ -124,6 +162,9 @@ class User(BaseModel):
 
   @property
   def unique(self):
+    '''
+    Propery to check that the username is unique.
+    '''
     try:
       val = getattr(self, '_unique', None)
       if val is None:
@@ -140,29 +181,29 @@ class User(BaseModel):
     if v is None:
       self._unique = v
 
-  def valid(self, prop=None):
-    isValid = False
-    props = {prop: self._properties.get(prop)} if prop else self._properties
-    for k, v in props.iteritems():
-      if isinstance(v, ndb.Property):
-        try:
-          val = self._values.get(k)
-          # print(k)
-          if v._required and not val:
-            # print(k, val, v._required)
-            return False
-          setattr(self, k, val)
-          # print(k)
-          isValid = True
-        except Exception as ex:
-          # print(ex)
-          return False
-    return isValid
+  # def valid(self, prop=None):
+  #   isValid = False
+  #   props = {prop: self._properties.get(prop)} if prop else self._properties
+  #   for k, v in props.iteritems():
+  #     if isinstance(v, ndb.Property):
+  #       try:
+  #         val = self._values.get(k)
+  #         # print(k)
+  #         if v._required and not val:
+  #           # print(k, val, v._required)
+  #           return False
+  #         setattr(self, k, val)
+  #         # print(k)
+  #         isValid = True
+  #       except Exception as ex:
+  #         # print(ex)
+  #         return False
+  #   return isValid
 
-  def fill(self, **kwargs):
-    # print('populate:')
-    # for k, v in kwargs.iteritems():
-    for k in self._properties:
-      v = kwargs.get(k)
-      if v:
-        self._values[k] = v
+  # def fill(self, **kwargs):
+  #   # print('populate:')
+  #   # for k, v in kwargs.iteritems():
+  #   for k in self._properties:
+  #     v = kwargs.get(k)
+  #     if v:
+  #       self._values[k] = v

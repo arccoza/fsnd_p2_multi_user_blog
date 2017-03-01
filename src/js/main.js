@@ -43,11 +43,11 @@ ready(ev => {
       // alert(document.cookie.replace(/(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
     })
     .then(res => {
-      print(res);
+      // print(res);
       ev.delegateTarget.classList[res]('button-icon--active');
     })
     .catch(err => {
-      print(err);
+      // print(err);
     });
     
     return false;
