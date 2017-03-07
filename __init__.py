@@ -119,7 +119,9 @@ def fave(post_id=None, post=None, user=None):
 
 @app.route("/edit/", defaults={'post_id': ''}, methods=['GET', 'POST'])
 @app.route("/edit/<string:post_id>", methods=['GET', 'POST'])
-@is_form_cancelled(lambda: redirect(url_for('root')))
+# @is_form_cancelled(lambda: redirect(url_for('root')))
+@is_form_cancelled(
+  lambda: redirect(request.args.get('next', None) or url_for('root')))
 @User.is_active(lambda: redirect(url_for('root')))
 @BlogPost.q(
   'WHERE ANCESTOR IS {{user.key|safe}} AND uid = \'{{post_id}}\'', 'post')
@@ -129,8 +131,8 @@ def edit(post_id=None, post=None, user=None):
   Create or edit a post.
   '''
   user = user or None
-  print('-------------------------------------------')
-  print('post query:', post)
+  # print('-------------------------------------------')
+  # print('post query:', post)
   post = post.get() if post else None
   # print('post get:', post.subject)
   # print('post key:', post.key)

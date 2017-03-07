@@ -19,21 +19,21 @@
 </div>
 {%- endmacro %}
 
-{% macro item(user=None, post=None, add=True, edit=True, rem=True, favourite=True, comments=False, class="item__controls") -%}
+{% macro item(user=None, post=None, add=True, edit=True, rem=True, favourite=True, comments=False, class="item__controls", next=None) -%}
 <div class="{{class}}">
   {% if user %}
   {% if add %}
-  <a href="/edit/" title="New post." class="button-icon">
+  <a href="{{url_for('edit')}}" title="New post." class="button-icon">
     <svg class="icon icon--control icon--file-add"><use xlink:href="#icon--file-add"></use></svg>
   </a>
   {% endif %}
   {% if edit and post and (user.key == post.key.parent()) %}
-  <a href="/edit/{{post.uid}}" title="Edit post." class="button-icon">
+  <a href="{{url_for('edit', post_id=post.uid, next=next or request.path)}}" title="Edit post." class="button-icon">
     <svg class="icon icon--control icon--file"><use xlink:href="#icon--file"></use></svg>
   </a>
   {% endif %}
   {% if rem and post and (user.key == post.key.parent()) %}
-  <a href="/delete/{{post.uid}}" title="Delete post." class="button-icon">
+  <a href="{{url_for('delete', post_id=post.uid)}}" title="Delete post." class="button-icon">
     <svg class="icon icon--control icon--file-subtract"><use xlink:href="#icon--file-subtract"></use></svg>
   </a>
   {% endif %}
