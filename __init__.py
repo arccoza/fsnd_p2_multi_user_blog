@@ -84,6 +84,8 @@ def fave(post_id=None, post=None, user=None):
   post = post.get() if post else None
   res = None
   if post:
+    if post.key.parent() == user.key:
+      return abort(403)
     faved = post.faved
     try:
       faved.remove(user.uid)
