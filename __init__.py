@@ -124,7 +124,7 @@ def fave(post_id=None, post=None, user=None):
 # @is_form_cancelled(lambda: redirect(url_for('root')))
 @is_form_cancelled(
   lambda: redirect(request.args.get('next', None) or url_for('root')))
-@User.is_active(lambda: redirect(url_for('root')))
+@User.is_active(lambda: redirect(url_for('signin')))
 @BlogPost.q(
   'WHERE ANCESTOR IS {{user.key|safe}} AND uid = \'{{post_id}}\'', 'post')
 @User.is_owner('post', lambda: abort(403))
@@ -160,8 +160,10 @@ def edit(post_id=None, post=None, user=None):
 
 @app.route("/delete/<string:post_id>", methods=['GET', 'POST'])
 # @BlogPost.q('WHERE __key__ = KEY(\'BlogPost\', %(post_id)s)', 'post')
-@is_form_cancelled(lambda: redirect(url_for('root')))
-@User.is_active(lambda: redirect(url_for('root')))
+# @is_form_cancelled(lambda: redirect(url_for('root')))
+@is_form_cancelled(
+  lambda: redirect(request.args.get('next', None) or url_for('root')))
+@User.is_active(lambda: redirect(url_for('signin')))
 @BlogPost.q('WHERE uid = \'{{post_id}}\'', 'post')
 @User.is_owner('post', lambda: abort(403))
 def delete(post_id=None, post=None, user=None):
