@@ -14,20 +14,30 @@
         <small>author: {{post.key.parent().get().username}}</small>
       </div>
       <footer id="comments" class="post__footer">
-        {% if user %}
+        {% if user and not comment_id %}
         {% call widgets.dialog(title='Add comment.', class='comment-form', ok='comment', cancel='cancel', action='/view/' + post.uid + '#comments') %}
           <textarea name="content" placeholder="Type your comment here."
             class="comment-form__content {{ 'input--error' if comment and comment.empty('content') else '' }}"></textarea>
         {% endcall %}
-        {% else %}
+        {% elif not user %}
         <h2>You must be signed-in to comment.</h2>
         {{ controls.auth(user=user) }}
         {% endif %}
         <ul class="post__comments">
           {% for comment in comments %}
-          <li class="post__comment">
-            <b>{{comment.author.get().username if comment.author else 'Nobody '}} said</b>
-            <div>{{comment.content}}</div>
+          <li id="{{comment.uid}}" class="post__comment comment">
+            {% if comment_id == comment.uid %}
+            {% call widgets.dialog(title='Edit comment.', class='comment-form', ok='update', cancel='cancel', action=url_for('view', post_id=post.uid, comment_id=comment.uid) + '#comments') %}
+              <textarea name="content" placeholder="Type your comment here."
+                class="comment-form__content {{ 'input--error' if comment and comment.empty('content') else '' }}">{{comment.content}}</textarea>
+            {% endcall %}
+            {% else %}
+            <div class="comment__header">
+              <b>{{comment.author.get().username if comment.author else 'Nobody '}} said</b>
+              {{ controls.comment(user=user, post=post, comment=comment) }}
+            </div>
+            <div class="comment__content">{{comment.content|md|safe}}</div>
+            {% endif %}
           </li>
           {% endfor %}
         </ul>

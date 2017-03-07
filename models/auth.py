@@ -60,7 +60,8 @@ def is_email(prop, v):
 
 class PasswordProperty(ndb.StringProperty):
   '''
-  A custom password property with validation.
+  A custom password property with validation and verification.
+  Passwords are hashed and compared using passlib.
   '''
   def _validate(self, value):
     if not isinstance(value, (str, unicode)):
@@ -146,7 +147,7 @@ class User(BaseModel):
     '''
     Decorator to provide user to wrapped function.
     Checks if the user owns the object in args identified by `what` arg.
-    If not available or owner calls fail handler.
+    If not available or owner, fail handler is called.
     '''
     def is_owner_deco(fn):
       @wraps(fn)
@@ -159,6 +160,25 @@ class User(BaseModel):
         return fn(**kwargs)
       return is_owner_handler
     return is_owner_deco
+
+  @classmethod
+  def is_author(cls, what, fail):
+    '''
+    Decorator to provide user to wrapped function.
+    Checks if the user authored the object in args identified by `what` arg.
+    If not available or author, fail handler is called.
+    '''
+    def is_author_deco(fn):
+      @wraps(fn)
+      def is_author_handler(**kwargs):
+        user = cls.get_current()
+        for entity in kwargs[what]:
+          if not entity.author == user.key:
+            return fail()
+        kwargs['user'] = user
+        return fn(**kwargs)
+      return is_author_handler
+    return is_author_deco
 
   @property
   def unique(self):

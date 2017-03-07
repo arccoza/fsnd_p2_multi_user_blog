@@ -54,6 +54,23 @@
 </div>
 {%- endmacro %}
 
+{% macro comment(user=None, post=None, comment=None, add=True, edit=True, rem=True, class="comment__controls", next=None) -%}
+<div class="{{class}}">
+  {% if user %}
+  {% if edit and post and (user.key == comment.author) %}
+  <a href="{{url_for('view', post_id=post.uid, comment_id=comment.uid)}}#{{comment.uid}}" title="Edit comment." class="button-icon">
+    <svg class="icon icon--control icon--file"><use xlink:href="#icon--file"></use></svg>
+  </a>
+  {% endif %}
+  {% if rem and post and (user.key == comment.author) %}
+  <a href="{{url_for('delete_comment', post_id=post.uid, comment_id=comment.uid, next=next or request.path)}}" title="Delete comment." class="button-icon">
+    <svg class="icon icon--control icon--file-subtract"><use xlink:href="#icon--file-subtract"></use></svg>
+  </a>
+  {% endif %}
+  {% endif %}
+</div>
+{%- endmacro %}
+
 {% macro confirm(user=None, post=None, class='confirm-controls') -%}
 <div class="{{class}}">
   {% if user %}

@@ -8,8 +8,8 @@
       </h2>
     </header>
     <div class="dialog__frame">
-      <h3>{{post.subject}}</h3>
-      <p>Are you sure you want to delete this post?</p>
+      <h3>{{post.subject or comment.content|md|safe}}</h3>
+      <p>Are you sure you want to delete this {{'post' if post else 'comment'}}?</p>
     </div>
     <footer class="dialog__footer">
       <button name="ok" value="ok">

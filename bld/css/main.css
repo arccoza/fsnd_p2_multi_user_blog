@@ -863,11 +863,28 @@ input[type=submit] *, button * {
           flex-flow: column wrap;
 }
 
-.post__comment > b {
+.comment__header {
   margin-bottom: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  /*justify-content: space-around;*/
 }
 
-.post__comment > div {
+.comment__content {
+  padding-left: 1em;
+}
+
+.comment__controls {
   padding-left: 1em;
 }
 

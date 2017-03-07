@@ -45,30 +45,39 @@ def root(offset=0, posts=None, user=None):
 
 
 @app.route("/view/<string:post_id>", methods=['GET', 'POST'])
-@is_form_cancelled(lambda: redirect(request.path))
+@app.route("/view/<string:post_id>/<string:comment_id>",
+           methods=['GET', 'POST'])
+# @is_form_cancelled(lambda: redirect(request.path))
 @BlogPost.q('WHERE uid = \'{{post_id}}\'', 'post')
 @BlogComment.q('WHERE ANCESTOR IS {{post.get().key|safe}}', 'comments')
+@BlogComment.q('WHERE uid = \'{{comment_id}}\'', 'comment')
 @User.is_available()
-def view(post_id=None, post=None, comments=None, user=None):
+def view(post_id=None, comment_id=None,
+  comment=None, post=None, comments=None, user=None):
   '''
   View and comment on a post.
   '''
+  if request.form.get('cancel'):
+    return redirect(url_for('view', post_id=post_id) + '#comments')
+
   user = user or None
   post = post.get() if post else None
   comments = comments or None
+  comment = comment.get() if comment else None
   if user and post and request.method == 'POST':
-    comment = BlogComment(parent=post.key)
+    comment = comment or BlogComment(parent=post.key)
     comment.fill(content=request.form.get('content', None), author=user.key)
     if not comment.empty('content'):
       comment.put()
-      return redirect(request.path + '#comments')
+      return redirect(url_for('view', post_id=post_id) + '#' + comment.uid)
     else:
       return render_template('view.html', page=None, user=user,
                           post=post, comments=comments,
-                          comment=comment)
+                          comment_id=comment_id)
   elif post:
     return render_template('view.html', page=None, user=user,
-                            post=post, comments=comments)
+                            post=post, comments=comments,
+                            comment_id=comment_id)
   else:
     return abort(404)
 
@@ -133,16 +142,7 @@ def edit(post_id=None, post=None, user=None):
   Create or edit a post.
   '''
   user = user or None
-  # print('-------------------------------------------')
-  # print('post query:', post)
   post = post.get() if post else None
-  # print('post get:', post.subject)
-  # print('post key:', post.key)
-  # BlogPost.gql('WHERE ANCESTOR IS ' + str(user.key) + ' and uid = \'' + post_id + '\'').get()
-  # k = ndb.Key(BlogPost, 5770237022568448, parent=user.key)
-  # print('key:', k)
-  # post = k.get()
-  # print('post key.get:', post.subject)
   if request.method == 'POST':
     post = post or BlogPost(parent=user.key)
     post.fill(**request.form.to_dict())
@@ -159,8 +159,6 @@ def edit(post_id=None, post=None, user=None):
 
 
 @app.route("/delete/<string:post_id>", methods=['GET', 'POST'])
-# @BlogPost.q('WHERE __key__ = KEY(\'BlogPost\', %(post_id)s)', 'post')
-# @is_form_cancelled(lambda: redirect(url_for('root')))
 @is_form_cancelled(
   lambda: redirect(request.args.get('next', None) or url_for('root')))
 @User.is_active(lambda: redirect(url_for('signin')))
@@ -171,12 +169,38 @@ def delete(post_id=None, post=None, user=None):
   Delete a post.
   '''
   post = post.get() if post else None
+  next = request.args.get('next', None)
   if request.method == 'POST':
     if post:
       post.key.delete()
       return redirect(url_for('root'))
   if post:
-    return render_template('delete.html', page=None, user=None, post=post)
+    return render_template('delete.html', page=None, user=None,
+                           post=post)
+  return abort(404)
+
+
+@app.route("/delete/<string:post_id>/<string:comment_id>",
+  methods=['GET', 'POST'])
+@is_form_cancelled(
+  lambda: redirect(request.args.get('next', None) or url_for('root')))
+@User.is_active(lambda: redirect(url_for('signin')))
+@BlogComment.q('WHERE uid = \'{{comment_id}}\'', 'comment')
+@User.is_author('comment', lambda: abort(403))
+def delete_comment(post_id=None, comment_id=None,
+  post=None, comment=None, user=None):
+  '''
+  Delete a post.
+  '''
+  comment = comment.get() if comment else None
+  next = request.args.get('next', None)
+  if request.method == 'POST':
+    if comment:
+      comment.key.delete()
+      return redirect(url_for('view', post_id=post_id) + '#comments')
+  if comment:
+    return render_template('delete.html', page=None, user=None,
+                           post=None, comment=comment)
   return abort(404)
 
 
