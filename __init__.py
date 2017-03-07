@@ -201,6 +201,7 @@ def signup():
   return render_template('signup.html',
                           page=None, user=user,
                           form_action=url_for('signup', next=next),
+                          next=next,
                           pass_verified=pass_verified)
 
 
@@ -234,6 +235,7 @@ def signin():
   return render_template('signin.html',
                           page=None, user=user,
                           form_action=url_for('signin', next=next),
+                          next=next,
                           user_verified=user_verified,
                           pass_verified=pass_verified)
 
@@ -253,7 +255,8 @@ def signout(user=None):
     return redirect(next or url_for('root'))
   return render_template('signout.html',
                           page=None, user=user,
-                          form_action=url_for('signout', next=next))
+                          form_action=url_for('signout', next=next),
+                          next=next)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import 'controls-macro.html' as controls %}
 {% block body %}
 <section id="auth" class="main">
   <form class="auth-box dialog" method="post" action={{form_action}}>
@@ -8,6 +9,9 @@
         Sign-in|on|up
         {% endblock %}
       </h2>
+      {% block auth__controls %}
+      {{ controls.auth(user=user) }}
+      {% endblock %}
     </header>
     <div class="dialog__frame">
       {% block auth__content %}
@@ -18,7 +22,7 @@
       {% endblock %}
     </div>
     <footer class="dialog__footer">
-      {% block auth__controls %}
+      {% block auth__confirm %}
       <button name="ok">
         <span>ok</span>
         <svg class="button__icon--end icon icon--check"><use xlink:href="#icon--check"></use></svg>

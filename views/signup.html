@@ -2,6 +2,9 @@
 {% block auth__title %}
 Signup
 {% endblock %}
+{% block auth__controls %}
+{{ controls.auth(user=user, signup=False, signin=True, signout=False, next=next) }}
+{% endblock %}
 {% block auth__content %}
 <input type="text" name="username" value="{{user.username or ''}}" placeholder="Enter your username"
   class="{{ 'input--error' if user and not (user.valid('username') and user.unique) else '' }}">
@@ -12,7 +15,7 @@ Signup
 <input type="text" name="email" value="{{user.email or ''}}" placeholder="Enter your email"
   class="{{ 'input--error' if user and not user.valid('email') else '' }}">
 {% endblock %}
-{% block auth__controls %}
+{% block auth__confirm %}
 <button name="ok" value="ok">
   <span>signup</span>
   <svg class="button__icon--end icon icon--check"><use xlink:href="#icon--check"></use></svg>

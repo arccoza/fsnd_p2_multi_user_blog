@@ -291,6 +291,7 @@ input[type=submit] *, button * {
 }
 
 .dialog__header {
+  justify-content: space-between;
 }
 
 .dialog__footer, .comment-form__footer {

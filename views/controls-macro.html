@@ -1,16 +1,18 @@
-{% macro auth(user=None) -%}
+{% macro auth(user=None, signup=True, signin=True, signout=True, next=None) -%}
 <div class="auth-controls">
   <small>{{user.username}}</small>
-  {% if user %}
-  <a href="{{url_for('signout', next=request.path)}}" title="Signout." class="button-icon">
+  {% if user and signout %}
+  <a href="{{url_for('signout', next=next or request.path)}}" title="Signout." class="button-icon">
     <svg class="icon icon--control icon--arrow-up"><use xlink:href="#icon--arrow-up"></use></svg>
   </a>
   {% endif %}
-  {% if not user %}
-  <a href="{{url_for('signin', next=request.path)}}" title="Signin." class="button-icon">
+  {% if not user and signin %}
+  <a href="{{url_for('signin', next=next or request.path)}}" title="Signin." class="button-icon">
     <svg class="icon icon--control icon--arrow-down"><use xlink:href="#icon--arrow-down"></use></svg>
   </a>
-  <a href="{{url_for('signup', next=request.path)}}" title="Signup." class="button-icon">
+  {% endif %}
+  {% if not user and signup %}
+  <a href="{{url_for('signup', next=next or request.path)}}" title="Signup." class="button-icon">
     <svg class="icon icon--control icon--head"><use xlink:href="#icon--head"></use></svg>
   </a>
   {% endif %}

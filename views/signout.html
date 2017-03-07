@@ -2,10 +2,12 @@
 {% block auth__title %}
 Signout
 {% endblock %}
+{% block auth__controls %}
+{% endblock %}
 {% block auth__content %}
 <p>Are you sure?</p>
 {% endblock %}
-{% block auth__controls %}
+{% block auth__confirm %}
 <button name="ok" value="ok">
   <span>signout</span>
   <svg class="button__icon--end icon icon--check"><use xlink:href="#icon--check"></use></svg>
