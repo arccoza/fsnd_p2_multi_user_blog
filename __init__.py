@@ -154,7 +154,7 @@ def edit(post_id=None, post=None, user=None):
         return redirect(url_for('edit', post_id=post.uid))
       except Exception as ex:
         print('post crud error', ex)
-        pass
+        return abort(500)
   return render_template('edit.html', page=None, user=user, post=post)
 
 
@@ -228,6 +228,7 @@ def signup():
     except Exception as ex:
       print('bad user')
       print(ex)
+      return abort(500)
   return render_template('signup.html',
                           page=None, user=user,
                           form_action=url_for('signup', next=next),

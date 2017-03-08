@@ -1,7 +1,7 @@
 from flask import render_template_string
 from google.appengine.ext import ndb
 from functools import wraps
-from cuid import cuid
+from utils.cuid import cuid
 
 
 class UidProperty(ndb.StringProperty):
@@ -30,7 +30,7 @@ class BaseModel(ndb.Model):
       flat = list(kwargs['key'].flat())
       flat[-1] = uid
       ndb.Key(*flat)
-      print('flat: ', flat)
+      # print('flat: ', flat)
     else:
       kwargs['id'] = uid
     super(BaseModel, self).__init__(*args, **kwargs)
@@ -46,7 +46,7 @@ class BaseModel(ndb.Model):
       @wraps(fn)
       def q_handler(**kwargs):
         # kwargs[kw_out] = cls.gql(query % kwargs)
-        print(kwargs)
+        # print(kwargs)
         kwargs[kw_out] = cls.gql(render_template_string(query, **kwargs))
         return fn(**kwargs)
       return q_handler
