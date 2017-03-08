@@ -39,6 +39,8 @@ Once registered and/or signed-in there will be an file+ icon at the top left of 
 Alongside each post, both in the index and when viewing individual posts, there are icons to favourite, edit, and delete posts.
 You can comment on a post using the form at the end of the article, you must be signed-in.
 
+Markdown is accepted in posts and comments.
+
 ## Notes
 
 - Custom `Security`, `Token`, and `Session` classes were created to manage auth and sessions in the app.
