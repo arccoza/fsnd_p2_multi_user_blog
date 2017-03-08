@@ -12,6 +12,10 @@ A modern browser (IE 11 / Edge, current versions of Chrome / Firefox / Safari) t
 
 An internet connection is required to access online resources.
 
+## View
+
+To view the site, visit this link: [https://fsnd-mublog.appspot.com/](https://fsnd-mublog.appspot.com/)
+
 ## Download and Setup
 
 ### Download
