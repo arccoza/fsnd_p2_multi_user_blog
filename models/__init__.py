@@ -23,7 +23,7 @@ class BaseModel(ndb.Model):
   The base model class for all models in this app.
   This model generates unique keys independent of GAE datastore.
   '''
-  uid = UidProperty()
+  uid = UidProperty(indexed=True)
   created = ndb.DateTimeProperty(auto_now_add=True)
   updated = ndb.DateTimeProperty(auto_now=True)
 

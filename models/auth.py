@@ -76,7 +76,8 @@ class User(BaseModel):
   User model for the app.
   Extends BaseModel.
   '''
-  username = ndb.StringProperty(required=True, validator=is_username)
+  username = ndb.StringProperty(required=True, validator=is_username,
+    indexed=True)
   password = PasswordProperty(required=True)
   email = ndb.StringProperty(required=True, validator=is_email)
 
