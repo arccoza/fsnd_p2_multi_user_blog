@@ -49,5 +49,7 @@ Markdown is accepted in posts and comments.
 
 - Custom `Security`, `Token`, and `Session` classes were created to manage auth and sessions in the app.
 - Authenticaion and sessions are handled using JSON Web Tokens.
+- Models use the Security object for route access control through decorators.
 - Passlib is used for password encryption and verification.
 - GAE does not allow you to access much information from python's `os` module, the `cuid` module requires `os.getpid` so a version for GAE was modified and placed in `utils`.
+- PEP8 was followed for all python code, except for the use of 2 space indentation; personal preference.
