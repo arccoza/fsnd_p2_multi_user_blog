@@ -47,7 +47,6 @@ def root(offset=0, posts=None, user=None):
 @app.route("/view/<string:post_id>", methods=['GET', 'POST'])
 @app.route("/view/<string:post_id>/<string:comment_id>",
            methods=['GET', 'POST'])
-# @is_form_cancelled(lambda: redirect(request.path))
 @BlogPost.q('WHERE uid = \'{{post_id}}\'', 'post')
 @BlogComment.q('WHERE ANCESTOR IS {{post.get().key|safe}}', 'comments')
 @BlogComment.q('WHERE uid = \'{{comment_id}}\'', 'comment')
@@ -109,28 +108,8 @@ def fave(post_id=None, post=None, user=None):
     return abort(404)
 
 
-# @app.route("/comment/<string:post_id>", methods=['POST'])
-# @User.is_active(lambda: abort(403))
-# @is_form_cancelled(lambda: redirect(request.referrer))
-# @BlogPost.q('WHERE uid = \'{{post_id}}\'', 'post')
-# def comment(post_id=None, post=None, user=None):
-#   '''
-#   Post to this route to add comments. INTEGRATED INTO view route.
-#   '''
-#   user = user or None
-#   post = post.get() if post else None
-#   if post:
-#     comment = BlogComment(parent=post.key)
-#     comment.fill(content=request.form.get('content'), author=user.key)
-#     comment.put()
-#     return redirect(request.referrer + '#comments')
-#   else:
-#     return abort(404)
-
-
 @app.route("/edit/", defaults={'post_id': ''}, methods=['GET', 'POST'])
 @app.route("/edit/<string:post_id>", methods=['GET', 'POST'])
-# @is_form_cancelled(lambda: redirect(url_for('root')))
 @is_form_cancelled(
   lambda: redirect(request.args.get('next', None) or url_for('root')))
 @User.is_active(lambda: redirect(url_for('signin')))
@@ -149,8 +128,6 @@ def edit(post_id=None, post=None, user=None):
     if not post.empty('subject', 'content'):
       try:
         key = post.put()
-        # post = key.get()
-        # print('post save:', post.subject)
         return redirect(url_for('edit', post_id=post.uid))
       except Exception as ex:
         print('post crud error', ex)
@@ -205,7 +182,6 @@ def delete_comment(post_id=None, comment_id=None,
 
 
 @app.route("/signup/", methods=['GET', 'POST'])
-# @sec.allow(lambda t: not t.get('usr'), lambda: redirect(url_for('root')))
 @is_form_cancelled(
   lambda: redirect(request.args.get('next', None) or url_for('root')))
 @User.is_inactive(lambda: redirect(url_for('root')))
@@ -220,7 +196,7 @@ def signup():
     try:
       user = User()
       user.fill(**request.form.to_dict())
-      pass_verified = request.form.get('verify') == request.form.get('password')
+      pass_verified = request.form.get('verify') == request.form.get('password')  # NOQA
       if user.valid() and user.unique and pass_verified:
         user.put()
         sec.token = {'usr': user.username, 'uid': user.uid}
@@ -237,7 +213,6 @@ def signup():
 
 
 @app.route("/signin/", methods=['GET', 'POST'])
-# @sec.allow(lambda t: not t.get('usr'), lambda: redirect(url_for('root')))
 @is_form_cancelled(
   lambda: redirect(request.args.get('next', None) or url_for('root')))
 @User.is_inactive(lambda: redirect(url_for('root')))
@@ -251,7 +226,7 @@ def signin():
   next = request.args.get('next', None)
   if request.method == 'POST':
     try:
-      user = User.query(User.username == request.form.get('username', '')).get()
+      user = User.query(User.username == request.form.get('username', '')).get()  # NOQA
     except Exception as ex:
       pass
     user_verified = True if user else False
@@ -272,7 +247,6 @@ def signin():
 
 
 @app.route("/signout/", methods=['GET', 'POST'])
-# @sec.allow(lambda t: t.get('usr'), lambda: redirect(url_for('signin')))
 @is_form_cancelled(
   lambda: redirect(request.args.get('next', None) or url_for('root')))
 @User.is_active(lambda: redirect(url_for('signin')))

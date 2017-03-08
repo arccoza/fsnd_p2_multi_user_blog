@@ -40,7 +40,6 @@ def is_password(prop, v):
   '''
   Check for values that pass password requirements.
   '''
-  # print('is_password: ', v, _re_is_password.match(v))
   if v and _re_is_password.match(v):
     return v
   else:
@@ -51,7 +50,6 @@ def is_email(prop, v):
   '''
   Check for values that pass email requirements.
   '''
-  # print('is_email: ', v, _re_is_email.match(v))
   if v and _re_is_email.match(v):
     return v
   else:
@@ -70,7 +68,6 @@ class PasswordProperty(ndb.StringProperty):
       return pw_hasher.hash(is_password(self, value))
 
   def verify(cls, password, hash):
-    # print(password, hash)
     return pw_hasher.verify(password, hash)
 
 
@@ -89,7 +86,6 @@ class User(BaseModel):
     Get the current user from cookies/tokens if possible.
     '''
     if g.security and g.security.token.get('usr'):
-      # user = cls.query(cls.username == g.security.token.get('usr')).get()
       user = ndb.Key(cls, g.security.token.get('uid')).get()
       if not user:
         g.security.token = {}

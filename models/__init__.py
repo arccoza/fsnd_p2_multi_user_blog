@@ -5,6 +5,9 @@ from utils.cuid import cuid
 
 
 class UidProperty(ndb.StringProperty):
+  '''
+  UID custom property, ensures that a valid uid (cuid) has been set.
+  '''
   # def __init__(self, *args, **kwargs):
   #   super(UidProperty, self).__init__(*args, **kwargs)
   #   print(cuid)
@@ -30,12 +33,10 @@ class BaseModel(ndb.Model):
       flat = list(kwargs['key'].flat())
       flat[-1] = uid
       ndb.Key(*flat)
-      # print('flat: ', flat)
     else:
       kwargs['id'] = uid
     super(BaseModel, self).__init__(*args, **kwargs)
     self.uid = self.uid or uid
-    # self.key = ndb.Key(self._get_kind(), self.uid)
 
   @classmethod
   def q(cls, query, kw_out):
@@ -45,8 +46,6 @@ class BaseModel(ndb.Model):
     def q_deco(fn):
       @wraps(fn)
       def q_handler(**kwargs):
-        # kwargs[kw_out] = cls.gql(query % kwargs)
-        # print(kwargs)
         kwargs[kw_out] = cls.gql(render_template_string(query, **kwargs))
         return fn(**kwargs)
       return q_handler
@@ -89,15 +88,11 @@ class BaseModel(ndb.Model):
       if isinstance(v, ndb.Property):
         try:
           val = self._values.get(k)
-          # print(k)
           if v._required and not val:
-            # print(k, val, v._required)
             return False
           setattr(self, k, val)
-          # print(k)
           isValid = True
         except Exception as ex:
-          # print(ex)
           return False
     return isValid
 
@@ -106,8 +101,6 @@ class BaseModel(ndb.Model):
     Fill the model with the keyword values that match prop names.
     Does not trigger validation.
     '''
-    # print('populate:')
-    # for k, v in kwargs.iteritems():
     for k in self._properties:
       v = kwargs.get(k)
       if v:
